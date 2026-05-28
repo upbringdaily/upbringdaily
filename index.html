@@ -4,59 +4,204 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Upbring Daily</title>
-
   <style>
-    body{
+    *{
       margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+    body{
+      font-family: Arial, sans-serif;
       background:#f8f5ef;
       color:#1d2a44;
-      font-family:Arial,sans-serif;
-      text-align:center;
+      line-height:1.6;
     }
-
+    header{
+      background:white;
+      padding:20px 40px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      position:sticky;
+      top:0;
+      box-shadow:0 2px 10px rgba(0,0,0,0.05);
+      z-index:1000;
+    }
+    .logo{
+      font-size:28px;
+      font-weight:bold;
+    }
+    nav a{
+      margin-left:20px;
+      text-decoration:none;
+      color:#1d2a44;
+      font-weight:500;
+    }
     .hero{
+      text-align:center;
       padding:120px 20px;
     }
-
-    h1{
-      font-size:56px;
+    .hero h1{
+      font-size:60px;
       margin-bottom:20px;
     }
-
-    p{
-      font-size:22px;
-      line-height:1.6;
-      max-width:700px;
+    .hero p{
+      max-width:750px;
       margin:auto;
+      font-size:22px;
+      color:#555;
     }
-
-    .btn{
+    .button{
       display:inline-block;
       margin-top:40px;
-      padding:15px 30px;
+      padding:16px 34px;
       background:#1d2a44;
       color:white;
       text-decoration:none;
       border-radius:10px;
       font-size:18px;
     }
+    .section{
+      max-width:1200px;
+      margin:auto;
+      padding:90px 20px;
+    }
+    .section-title{
+      text-align:center;
+      font-size:42px;
+      margin-bottom:20px;
+    }
+    .section-subtitle{
+      text-align:center;
+      max-width:700px;
+      margin:auto;
+      color:#555;
+      margin-bottom:50px;
+    }
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+      gap:30px;
+    }
+    .card{
+      background:white;
+      padding:35px;
+      border-radius:18px;
+      box-shadow:0 5px 20px rgba(0,0,0,0.06);
+    }
+    .card h3{
+      margin-bottom:15px;
+      font-size:24px;
+    }
+    .book{
+      background:white;
+      padding:50px;
+      border-radius:20px;
+      text-align:center;
+      box-shadow:0 5px 20px rgba(0,0,0,0.06);
+    }
+    .book h3{
+      font-size:34px;
+      margin-bottom:20px;
+    }
+    .footer{
+      background:#1d2a44;
+      color:white;
+      text-align:center;
+      padding:50px 20px;
+      margin-top:80px;
+    }
+    @media(max-width:768px){
+      header{
+        flex-direction:column;
+      }
+      nav{
+        margin-top:15px;
+      }
+      .hero h1{
+        font-size:42px;
+      }
+      .hero p{
+        font-size:18px;
+      }
+      .section-title{
+        font-size:32px;
+      }
+    }
   </style>
 </head>
-
 <body>
-
-<div class="hero">
-  <h1>Upbring Daily</h1>
-
+<header>
+  <div class="logo">
+    Upbring Daily
+  </div>
+  <nav>
+    <a href="#">Home</a>
+    <a href="#">Resources</a>
+    <a href="#">Books</a>
+    <a href="#">Contact</a>
+  </nav>
+</header>
+<section class="hero">
+  <h1>Raising Rooted Families</h1>
   <p>
-    Raising rooted families through daily discipleship,
-    biblical parenting, and Christ-centered living.
+    Helping parents disciple children through biblical parenting,
+    daily faith practices, and Christ-centered family living.
   </p>
-
-  <a class="btn" href="#">
+  <a class="button" href="#">
     Explore Resources
   </a>
-</div>
-
+</section>
+<section class="section">
+  <h2 class="section-title">
+    What We Offer
+  </h2>
+  <p class="section-subtitle">
+    Practical resources designed to strengthen families,
+    deepen faith, and build Christ-centered homes.
+  </p>
+  <div class="grid">
+    <div class="card">
+      <h3>Faith-Based Parenting</h3>
+      <p>
+        Biblical guidance for modern parents navigating
+        discipleship, culture, and family life.
+      </p>
+    </div>
+    <div class="card">
+      <h3>Daily Discipleship</h3>
+      <p>
+        Helping families build simple daily rhythms rooted
+        in Scripture, prayer, and worship.
+      </p>
+    </div>
+    <div class="card">
+      <h3>Books & Resources</h3>
+      <p>
+        Carefully created devotionals, journals, and
+        discipleship tools for Christian families.
+      </p>
+    </div>
+  </div>
+</section>
+<section class="section">
+  <div class="book">
+    <h3>
+      What Your Children Will Remember
+    </h3>
+    <p>
+      A Christ-centered parenting resource focused on
+      intentional family discipleship and lasting spiritual legacy.
+    </p>
+    <a class="button" href="#">
+      View on Amazon
+    </a>
+  </div>
+</section>
+<footer class="footer">
+  <p>
+    © 2026 Upbring Daily • All Rights Reserved
+  </p>
+</footer>
 </body>
 </html>
