@@ -183,6 +183,11 @@ footer .inner{padding:clamp(56px,7vw,84px) 0 0;}
 .foot-bottom{border-top:1px solid rgba(255,255,255,.1);padding:26px 0 36px;display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;align-items:center;}
 .foot-bottom p{font-size:.85rem;color:#6E7C92;}
 .foot-bottom .verse{font-style:italic;font-family:'Newsreader',serif;}
+.insta-bar{background:#16243A;border-top:1px solid rgba(255,255,255,.06);padding:14px min(4%,24px);display:flex;align-items:center;justify-content:center;gap:12px;}
+.insta-bar a{display:inline-flex;align-items:center;gap:9px;text-decoration:none;color:#94A0B4;font-size:.92rem;font-weight:500;}
+.insta-bar a:hover{color:#C9A24B;}
+.insta-icon{width:18px;height:18px;border-radius:5px;border:1.5px solid currentColor;display:grid;place-items:center;flex:none;}
+.insta-icon::after{content:'';width:6px;height:6px;border-radius:50%;border:1.5px solid currentColor;}
 
 @media(max-width:900px){
   .nav-links{display:none;}
@@ -204,6 +209,7 @@ footer .inner{padding:clamp(56px,7vw,84px) 0 0;}
       <a href="#book">The Book</a>
       <a href="#resources">Resources</a>
       <a href="#community">Community</a>
+      <a href="https://instagram.com/upbringdaily" target="_blank" rel="noopener" title="@upbringdaily" style="display:inline-flex;align-items:center;gap:6px;text-decoration:none;color:#463F35;font-size:.88rem;font-weight:500;white-space:nowrap;" style-hover="color:#C9A24B;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>@upbringdaily</a>
       <a href="https://whatsapp.com/channel/0029Vb7gKDbG3R3qmlIybQ1K" target="_blank" rel="noopener" class="nav-cta">Join Community</a>
     </div>
     <button class="menu-btn" aria-label="Menu" onclick="document.getElementById('mm').classList.toggle('open')"><span></span></button>
@@ -385,11 +391,18 @@ footer .inner{padding:clamp(56px,7vw,84px) 0 0;}
         <p class="t">Connect</p>
         <div class="links">
           <a href="https://whatsapp.com/channel/0029Vb7gKDbG3R3qmlIybQ1K" target="_blank" rel="noopener">WhatsApp Channel</a>
+          <a href="https://instagram.com/upbringdaily" target="_blank" rel="noopener">Instagram @upbringdaily</a>
           <a href="mailto:hello@upbringdaily.com">hello@upbringdaily.com</a>
           <a href="https://upbringdaily.beehiiv.com/subscribe" target="_blank" rel="noopener">Email Updates</a>
           <a href="https://amzn.eu/d/04zI7nNh" target="_blank" rel="noopener">Get the Book</a>
         </div>
       </div>
+    </div>
+    <div class="insta-bar">
+      <a href="https://instagram.com/upbringdaily" target="_blank" rel="noopener">
+        <span class="insta-icon"></span>
+        Follow us on Instagram &middot; @upbringdaily
+      </a>
     </div>
     <div class="foot-bottom">
       <p>&copy; 2026 Upbring Daily. All rights reserved.</p>
