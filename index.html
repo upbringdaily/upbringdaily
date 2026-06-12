@@ -64,9 +64,23 @@ nav{display:flex;align-items:center;justify-content:space-between;gap:18px;heigh
 .btn-ghost:hover{background:rgba(28,46,74,.05);}
 .hero-note{margin-top:24px;font-size:.9rem;color:#8A7E6C;}
 .hero-art{flex:1 1 360px;min-width:280px;display:grid;place-items:center;}
-.hero-art .frame{position:relative;padding:clamp(20px,4vw,40px);background:radial-gradient(120% 120% at 50% 30%,#F4E9D2 0%,rgba(244,233,210,0) 70%);}
-.hero-art img{width:clamp(220px,32vw,330px);border-radius:8px;box-shadow:0 30px 60px -20px rgba(28,46,74,.45),0 8px 18px -8px rgba(28,46,74,.3);}
-.badge{position:absolute;bottom:8px;right:0;background:#C9A24B;color:#1C2E4A;font-weight:700;font-size:.82rem;letter-spacing:.04em;padding:11px 17px;border-radius:999px;box-shadow:0 8px 20px -6px rgba(28,46,74,.4);animation:floaty 5s ease-in-out infinite;}
+.trust-card{background:#FCF8F0;border:1px solid rgba(28,46,74,.1);border-radius:22px;padding:28px;box-shadow:0 20px 48px -18px rgba(28,46,74,.22);width:100%;max-width:420px;}
+.trust-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px;}
+.trust-block{background:#F0EAE0;border-radius:14px;padding:20px 18px;display:flex;flex-direction:column;justify-content:center;gap:6px;}
+.trust-block-accent{background:#1C2E4A;}
+.trust-num{font-family:'Newsreader',serif;font-size:3.2rem;font-weight:600;color:#C9A24B;line-height:1;}
+.trust-label{font-size:.82rem;color:#C8C0AE;font-weight:500;line-height:1.35;}
+.trust-pillars{display:flex;flex-direction:column;gap:5px;}
+.trust-pillars span{font-family:'Newsreader',serif;font-size:.97rem;font-weight:600;color:#1C2E4A;display:inline-flex;align-items:center;gap:7px;}
+.trust-pillars span::before{content:'';width:5px;height:5px;background:#C9A24B;transform:rotate(45deg);flex:none;}
+.trust-mission{font-size:.88rem;color:#5C5446;line-height:1.5;margin:0;}
+.trust-block-quote{background:#EFE4D2;}
+.trust-for-who{display:flex;flex-direction:column;gap:4px;}
+.trust-for-who .label{font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#8A7E6C;margin-bottom:6px;}
+.trust-for-who .line{display:inline-flex;align-items:center;gap:8px;font-family:'Newsreader',serif;font-size:1rem;color:#1C2E4A;font-weight:500;}
+.trust-for-who .line::before{content:'';width:5px;height:5px;background:#C9A24B;transform:rotate(45deg);flex:none;}
+.trust-for-who .called{color:#B0801E;font-style:italic;font-weight:600;}
+.trust-footer{text-align:center;}
 
 /* MISSION */
 .mission{background:#EFE4D2;}
@@ -79,8 +93,8 @@ nav{display:flex;align-items:center;justify-content:space-between;gap:18px;heigh
 
 /* PHOTO BAND */
 .photo-band{position:relative;min-height:clamp(320px,42vw,520px);display:grid;place-items:center;overflow:hidden;background:#1C2E4A;}
-.photo-band img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
-.photo-band::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,33,54,.32),rgba(20,33,54,.66));}
+.photo-band img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 40%;}
+.photo-band::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(12,22,40,.10) 0%,rgba(12,22,40,.48) 50%,rgba(12,22,40,.72) 100%);}
 .photo-band.noimg{background:linear-gradient(135deg,#27406a 0%,#1C2E4A 55%,#152136 100%);}
 .photo-band.noimg::before{content:"Add a warm family photo \2014  upload as  family-home.jpg";position:absolute;bottom:16px;left:0;right:0;text-align:center;font-size:.74rem;letter-spacing:.06em;text-transform:uppercase;color:rgba(233,217,176,.45);z-index:4;}
 .photo-band-overlay{position:relative;z-index:3;text-align:center;max-width:32ch;padding:0 24px;}
@@ -214,9 +228,35 @@ footer .inner{padding:clamp(56px,7vw,84px) 0 0;}
     <p class="hero-note">Free devotionals &middot; A growing community of Christian families</p>
   </div>
   <div class="hero-art">
-    <div class="frame">
-      <img src="book-cover.png.jpg" alt="What Your Children Will Remember, a 40-day devotional for fathers, Upbring Daily">
-      <div class="badge">40-Day Devotional for Fathers</div>
+    <div class="trust-card">
+      <div class="trust-grid">
+        <div class="trust-block trust-block-accent">
+          <span class="trust-num">40</span>
+          <span class="trust-label">days of devotional content for fathers</span>
+        </div>
+        <div class="trust-block">
+          <div class="trust-pillars">
+            <span>Faith</span>
+            <span>Family</span>
+            <span>Discipleship</span>
+            <span>Legacy</span>
+          </div>
+        </div>
+        <div class="trust-block">
+          <p class="trust-mission">For fathers who want to lead their homes with presence, grace, and biblical grounding, even when they feel unprepared.</p>
+        </div>
+        <div class="trust-block trust-block-quote">
+          <div class="trust-for-who">
+            <span class="label">Written for fathers who feel</span>
+            <span class="line">Imperfect</span>
+            <span class="line">Unprepared</span>
+            <span class="line called">Called anyway</span>
+          </div>
+        </div>
+      </div>
+      <div class="trust-footer">
+        <span class="gift-badge" style="font-size:.7rem;padding:7px 14px;">The Perfect Father&rsquo;s Day Gift &rarr; Available on Amazon</span>
+      </div>
     </div>
   </div>
 </section>
@@ -232,7 +272,7 @@ footer .inner{padding:clamp(56px,7vw,84px) 0 0;}
 
 <!-- PHOTO BAND -->
 <section class="photo-band">
-  <img src="family-home.jpg" alt="A Christian family sharing a meal and prayer together at home" onerror="this.parentElement.classList.add('noimg');this.remove();">
+  <img src="family-home.jpg" alt="A family gathered around a table reading the Bible together at home, Faith, Family, Discipleship, Legacy">
   <div class="photo-band-overlay">
     <p class="kicker">The path home</p>
     <p class="photo-band-quote">Walk the road with them while they are young, and they will not lose their way.</p>
