@@ -1,300 +1,361 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Upbring Daily | Christian Parenting & Family Discipleship</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Upbring Daily | Raising Rooted Families in Christ</title>
+<meta name="description" content="Christ-centered parenting resources, family discipleship tools, and daily encouragement to help you build a rooted, faith-filled home, one ordinary day at a time.">
+<meta name="theme-color" content="#1C2E4A">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Upbring Daily | Raising Rooted Families in Christ">
+<meta property="og:description" content="Christ-centered parenting resources, family discipleship tools, and daily encouragement to help you build a rooted, faith-filled home.">
+<meta property="og:url" content="https://upbringdaily.com">
+<meta property="og:image" content="book-cover.png.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-  <style>
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
-    }
-    body{font-family: Arial, sans-serif;font-family: 'Inter', sans-serif;
-      font-family: Arial, sans-serif;
-      background:#f8f5ef;
-      color:#1d2a44;
-      line-height:1.6;
-    }
-    header{
-      background:white;
-      padding:20px 40px;
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      position:sticky;
-      top:0;
-      box-shadow:0 2px 10px rgba(0,0,0,0.05);
-      z-index:1000;
-    }
-    .logo{
-      font-size:28px;
-      font-weight:bold;
-    }
-    nav a{
-      margin-left:20px;
-      text-decoration:none;
-      color:#1d2a44;
-      font-weight:500;
-    }
-    .hero{
-      text-align:center;
-      padding:120px 20px;
-    }
-    .hero h1{
-      font-family: 'Cormorant Garamond', serif;
-      font-size:60px;
-      margin-bottom:20px;
-    }
-    .hero-buttons{
-display:flex;
-justify-content:center;
-gap:20px;
-margin-top:35px;
-flex-wrap:wrap;
-}
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Organization","name":"Upbring Daily","url":"https://upbringdaily.com","email":"hello@upbringdaily.com","description":"Christian parenting, family discipleship, and faith-based resources for fathers, mothers, and growing families.","makesOffer":{"@type":"Offer","itemOffered":{"@type":"Book","name":"What Your Children Will Remember","bookFormat":"https://schema.org/Paperback","about":"A 40-day devotional journey for fathers."}}}
+</script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Hanken Grotesk',system-ui,Arial,sans-serif;background:#F7F1E7;color:#463F35;font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+::selection{background:#C9A24B;color:#1C2E4A;}
+a{color:inherit;}
+img{max-width:100%;display:block;}
+.wrap{width:min(92%,1140px);margin:0 auto;}
+@keyframes floaty{0%,100%{transform:translateY(0);}50%{transform:translateY(-9px);}}
 
-.button.secondary{
-background:white;
-color:#1d2a44;
-border:2px solid #1d2a44;
-}
+/* NAV */
+header{position:sticky;top:0;z-index:50;background:rgba(247,241,231,.88);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid rgba(28,46,74,.08);}
+nav{display:flex;align-items:center;justify-content:space-between;gap:18px;height:74px;}
+.brand{display:flex;align-items:center;gap:11px;text-decoration:none;}
+.brand-mark{width:38px;height:38px;border-radius:50%;background:#1C2E4A;color:#F7F1E7;display:grid;place-items:center;font-family:'Newsreader',serif;font-weight:600;font-size:1.2rem;flex:none;}
+.brand-name{font-family:'Newsreader',serif;font-size:1.4rem;font-weight:600;color:#1C2E4A;}
+.brand-name i{font-style:italic;color:#B0801E;font-weight:500;}
+.nav-links{display:flex;align-items:center;gap:28px;}
+.nav-links a{text-decoration:none;color:#463F35;font-weight:500;font-size:.97rem;white-space:nowrap;}
+.nav-links a:hover{color:#1C2E4A;}
+.nav-cta{background:#213A5C;color:#FBF7EF!important;padding:11px 22px;border-radius:999px;font-weight:600;font-size:.94rem;}
+.nav-cta:hover{background:#16243A;}
+.menu-btn{display:none;background:transparent;border:1px solid rgba(28,46,74,.18);border-radius:11px;width:46px;height:44px;cursor:pointer;align-items:center;justify-content:center;}
+.menu-btn span{display:block;width:20px;height:2px;background:#1C2E4A;border-radius:2px;box-shadow:0 6px 0 #1C2E4A,0 -6px 0 #1C2E4A;}
+.mobile-menu{display:none;border-top:1px solid rgba(28,46,74,.08);background:#F7F1E7;padding:14px 4% 22px;flex-direction:column;gap:6px;}
+.mobile-menu.open{display:flex;}
+.mobile-menu a{text-decoration:none;color:#1C2E4A;font-weight:500;font-size:1.05rem;padding:11px 4px;border-bottom:1px solid rgba(28,46,74,.07);}
+.mobile-menu .nav-cta{margin-top:10px;text-align:center;padding:14px;border-bottom:none;}
 
-.trust-line{
-margin-top:35px;
-font-size:18px;
-font-weight:500;
+/* HERO */
+.hero{display:flex;flex-wrap:wrap;align-items:center;gap:clamp(32px,5vw,64px);padding:clamp(48px,7vw,92px) 0 clamp(40px,6vw,72px);}
+.hero-copy{flex:1 1 420px;min-width:300px;}
+.eyebrow{display:inline-flex;align-items:center;gap:9px;color:#B0801E;font-size:.8rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;margin-bottom:22px;}
+.eyebrow .rule{width:22px;height:1.5px;background:#C9A24B;}
+.hero h1{font-family:'Newsreader',serif;font-weight:500;color:#1C2E4A;font-size:clamp(2.4rem,6vw,4rem);line-height:1.04;letter-spacing:-.01em;margin-bottom:22px;text-wrap:balance;}
+.hero h1 i{font-style:italic;color:#B0801E;}
+.hero-sub{font-size:clamp(1.05rem,2.3vw,1.2rem);color:#5C5446;max-width:34ch;margin-bottom:32px;text-wrap:pretty;}
+.btn-row{display:flex;flex-wrap:wrap;gap:14px;}
+.btn{display:inline-flex;align-items:center;gap:10px;text-decoration:none;padding:15px 26px;border-radius:999px;font-weight:600;font-size:1rem;}
+.btn-wa{background:#1FA855;color:#fff;box-shadow:0 2px 6px rgba(31,168,85,.28);}
+.btn-wa:hover{background:#1c9a4d;}
+.btn-wa .dot{width:9px;height:9px;border-radius:50%;background:#fff;}
+.btn-ghost{background:transparent;color:#1C2E4A;border:1.5px solid rgba(28,46,74,.22);}
+.btn-ghost:hover{background:rgba(28,46,74,.05);}
+.hero-note{margin-top:24px;font-size:.9rem;color:#8A7E6C;}
+.hero-art{flex:1 1 360px;min-width:280px;display:grid;place-items:center;}
+.hero-art .frame{position:relative;padding:clamp(20px,4vw,40px);background:radial-gradient(120% 120% at 50% 30%,#F4E9D2 0%,rgba(244,233,210,0) 70%);}
+.hero-art img{width:clamp(220px,32vw,330px);border-radius:8px;box-shadow:0 30px 60px -20px rgba(28,46,74,.45),0 8px 18px -8px rgba(28,46,74,.3);}
+.badge{position:absolute;bottom:8px;right:0;background:#C9A24B;color:#1C2E4A;font-weight:700;font-size:.82rem;letter-spacing:.04em;padding:11px 17px;border-radius:999px;box-shadow:0 8px 20px -6px rgba(28,46,74,.4);animation:floaty 5s ease-in-out infinite;}
+
+/* MISSION */
+.mission{background:#EFE4D2;}
+.mission .inner{width:min(92%,860px);margin:0 auto;padding:clamp(64px,8vw,108px) 0;text-align:center;}
+.diamond-rule{display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:30px;}
+.diamond-rule .rule{width:36px;height:1.5px;background:#C9A24B;}
+.diamond-rule .dia{width:7px;height:7px;background:#C9A24B;transform:rotate(45deg);}
+.mission blockquote{font-family:'Newsreader',serif;font-style:italic;color:#1C2E4A;font-size:clamp(1.5rem,3.6vw,2.3rem);line-height:1.32;margin-bottom:28px;text-wrap:balance;}
+.mission p{color:#5C5446;font-size:clamp(1.02rem,2.2vw,1.15rem);max-width:60ch;margin:0 auto;text-wrap:pretty;}
+
+/* PHOTO BAND */
+.photo-band{position:relative;min-height:clamp(320px,42vw,520px);display:grid;place-items:center;overflow:hidden;background:#1C2E4A;}
+.photo-band img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+.photo-band::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,33,54,.32),rgba(20,33,54,.66));}
+.photo-band.noimg{background:linear-gradient(135deg,#27406a 0%,#1C2E4A 55%,#152136 100%);}
+.photo-band.noimg::before{content:"Add a warm family photo \2014  upload as  family-home.jpg";position:absolute;bottom:16px;left:0;right:0;text-align:center;font-size:.74rem;letter-spacing:.06em;text-transform:uppercase;color:rgba(233,217,176,.45);z-index:4;}
+.photo-band-overlay{position:relative;z-index:3;text-align:center;max-width:32ch;padding:0 24px;}
+.photo-band-overlay .kicker{color:#E2C879;margin-bottom:16px;}
+.photo-band-quote{font-family:'Newsreader',serif;font-style:italic;color:#fff;font-size:clamp(1.45rem,3.6vw,2.3rem);line-height:1.28;text-wrap:balance;margin:0;}
+
+/* SECTIONS */
+.section{padding:clamp(64px,8vw,104px) 0;}
+.kicker{color:#B0801E;font-size:.8rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;margin-bottom:14px;}
+.h2{font-family:'Newsreader',serif;font-weight:500;color:#1C2E4A;font-size:clamp(1.9rem,4.4vw,3rem);line-height:1.08;text-wrap:balance;}
+.section-head{max-width:46ch;margin-bottom:clamp(36px,5vw,54px);}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,270px),1fr));gap:18px;}
+.card{background:#FCF8F0;border:1px solid rgba(28,46,74,.08);border-radius:18px;padding:30px 26px;}
+.card .num{display:grid;place-items:center;width:40px;height:40px;border-radius:11px;background:#EFE4D2;color:#B0801E;font-family:'Newsreader',serif;font-weight:600;margin-bottom:18px;}
+.card .num.sage{background:#E4E8DC;color:#5F6E48;}
+.card h3{font-family:'Newsreader',serif;font-weight:600;color:#1C2E4A;font-size:1.25rem;margin-bottom:8px;}
+.card p{color:#6F6557;font-size:.98rem;}
+
+/* BOOK */
+.book{background:#1C2E4A;color:#EDE6D6;}
+.book .inner{display:flex;flex-wrap:wrap;align-items:center;gap:clamp(36px,6vw,72px);padding:clamp(64px,8vw,112px) 0;}
+.book-art{flex:1 1 300px;min-width:260px;display:grid;place-items:center;}
+.book-art img{width:clamp(230px,30vw,340px);border-radius:8px;box-shadow:0 40px 80px -24px rgba(0,0,0,.6);}
+.book-copy{flex:1 1 420px;min-width:300px;}
+.book .eyebrow{color:#C9A24B;}
+.gift-badge{display:inline-block;background:#C9A24B;color:#1C2E4A;font-weight:700;font-size:.74rem;letter-spacing:.1em;text-transform:uppercase;padding:9px 17px;border-radius:999px;margin-bottom:20px;box-shadow:0 10px 24px -8px rgba(201,162,75,.6);}
+.book h2{font-family:'Newsreader',serif;font-weight:500;font-size:clamp(2rem,4.6vw,3.1rem);line-height:1.06;margin-bottom:10px;color:#fff;text-wrap:balance;}
+.book .tag{font-family:'Newsreader',serif;font-style:italic;color:#C9A24B;font-size:clamp(1.1rem,2.4vw,1.35rem);margin-bottom:24px;}
+.book .desc{color:#C8C0AE;font-size:1.06rem;margin-bottom:24px;max-width:54ch;text-wrap:pretty;}
+.pills{display:flex;flex-wrap:wrap;gap:10px 26px;margin-bottom:32px;}
+.pills span{display:inline-flex;align-items:center;gap:9px;color:#EDE6D6;font-size:.97rem;}
+.pills .dia{width:6px;height:6px;background:#C9A24B;transform:rotate(45deg);}
+.btn-gold{background:#C9A24B;color:#1C2E4A;box-shadow:0 10px 26px -10px rgba(201,162,75,.7);font-weight:700;padding:15px 30px;}
+.btn-gold:hover{background:#d8b25c;}
+
+/* RESOURCES */
+.res-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:20px;margin-bottom:clamp(32px,5vw,48px);}
+.res-link{text-decoration:none;color:#1C2E4A;font-weight:600;border-bottom:2px solid #C9A24B;padding-bottom:3px;white-space:nowrap;}
+.res-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr));gap:18px;}
+.res-card{text-decoration:none;background:#FCF8F0;border:1px solid rgba(28,46,74,.08);border-radius:18px;padding:28px 26px;display:block;}
+.res-card:hover{border-color:rgba(201,162,75,.6);}
+.res-card .free{display:inline-block;font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#1FA855;background:rgba(31,168,85,.1);padding:5px 11px;border-radius:999px;margin-bottom:18px;}
+.res-card h3{font-family:'Newsreader',serif;font-weight:600;color:#1C2E4A;font-size:1.2rem;margin-bottom:7px;}
+.res-card p{color:#6F6557;font-size:.95rem;}
+
+/* COMMUNITY */
+.community{background:#EFE4D2;}
+.community .inner{width:min(92%,1000px);margin:0 auto;padding:clamp(64px,8vw,104px) 0;}
+.community-card{background:#FCF8F0;border:1px solid rgba(28,46,74,.1);border-radius:26px;padding:clamp(36px,6vw,64px);text-align:center;box-shadow:0 24px 50px -28px rgba(28,46,74,.3);}
+.community-icon{display:inline-grid;place-items:center;width:56px;height:56px;border-radius:50%;background:rgba(31,168,85,.12);margin-bottom:24px;}
+.community-icon span{width:14px;height:14px;border-radius:50%;background:#1FA855;}
+.community-card h2{font-family:'Newsreader',serif;font-weight:500;color:#1C2E4A;font-size:clamp(1.9rem,4.4vw,2.9rem);line-height:1.1;margin-bottom:16px;text-wrap:balance;}
+.community-card p{color:#5C5446;font-size:clamp(1.02rem,2.2vw,1.15rem);max-width:52ch;margin:0 auto 30px;text-wrap:pretty;}
+.btn-wa.big{font-size:1.05rem;padding:16px 32px;box-shadow:0 10px 26px -10px rgba(31,168,85,.6);}
+
+/* NEWSLETTER */
+.news{width:min(92%,820px);margin:0 auto;padding:clamp(64px,8vw,104px) 0;text-align:center;}
+.news-card{background:#FCF8F0;border:1px solid rgba(28,46,74,.1);border-radius:26px;padding:clamp(36px,6vw,60px);box-shadow:0 24px 50px -28px rgba(28,46,74,.3);}
+.news-list{list-style:none;padding:0;margin:0 auto 30px;display:flex;flex-wrap:wrap;gap:10px 22px;justify-content:center;max-width:560px;}
+.news-list li{display:inline-flex;align-items:center;gap:9px;color:#5C5446;font-size:.97rem;}
+.news-list .ck{width:18px;height:18px;border-radius:50%;background:rgba(31,168,85,.14);color:#1FA855;display:grid;place-items:center;font-size:.7rem;flex:none;}
+.news h2{font-family:'Newsreader',serif;font-weight:500;color:#1C2E4A;font-size:clamp(1.9rem,4.4vw,2.9rem);line-height:1.1;margin-bottom:16px;text-wrap:balance;}
+.news p{color:#5C5446;font-size:1.08rem;max-width:48ch;margin:0 auto 34px;text-wrap:pretty;}
+.news form{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;max-width:520px;margin:0 auto;}
+.news input{flex:1 1 260px;min-width:0;background:#FCF8F0;border:1.5px solid rgba(28,46,74,.18);border-radius:999px;padding:15px 24px;font-size:1rem;font-family:inherit;color:#1C2E4A;outline:none;}
+.news input:focus{border-color:#C9A24B;}
+.news button{flex:none;background:#213A5C;color:#FBF7EF;border:none;cursor:pointer;padding:15px 30px;border-radius:999px;font-weight:600;font-size:1rem;font-family:inherit;}
+.news button:hover{background:#16243A;}
+.news .fine{margin-top:20px;font-size:.85rem;color:#9C9079;}
+
+/* FOOTER */
+footer{background:#16243A;color:#C2CAD8;}
+footer .inner{padding:clamp(56px,7vw,84px) 0 0;}
+.foot-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:40px 28px;padding-bottom:54px;}
+.foot-about{grid-column:1/-1;max-width:34ch;}
+.foot-brand{display:flex;align-items:center;gap:11px;text-decoration:none;margin-bottom:18px;}
+.foot-brand .brand-mark{background:#C9A24B;color:#16243A;}
+.foot-brand span{font-family:'Newsreader',serif;font-size:1.4rem;font-weight:600;color:#fff;}
+.foot-about p{color:#94A0B4;font-size:.97rem;text-wrap:pretty;}
+.foot-col p.t{color:#fff;font-weight:600;font-size:.95rem;margin-bottom:16px;}
+.foot-col .links{display:flex;flex-direction:column;gap:11px;}
+.foot-col a{text-decoration:none;color:#94A0B4;font-size:.95rem;}
+.foot-col a:hover{color:#C9A24B;}
+.foot-bottom{border-top:1px solid rgba(255,255,255,.1);padding:26px 0 36px;display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;align-items:center;}
+.foot-bottom p{font-size:.85rem;color:#6E7C92;}
+.foot-bottom .verse{font-style:italic;font-family:'Newsreader',serif;}
+
+@media(max-width:900px){
+  .nav-links{display:none;}
+  .menu-btn{display:flex;}
 }
-    }
-    .button{
-      display:inline-block;
-      margin-top:40px;
-      padding:16px 34px;
-      background:#1d2a44;
-      color:white;
-      text-decoration:none;
-      border-radius:10px;
-      font-size:18px;
-    }
-    .section{
-      max-width:1200px;
-      margin:auto;
-      padding:90px 20px;
-    }
-    .section-title{
-      font-family: 'Cormorant Garamond', serif;
-      text-align:center;
-      font-size:42px;
-      margin-bottom:20px;
-    }
-    .section-subtitle{
-      text-align:center;
-      max-width:700px;
-      margin:auto;
-      color:#555;
-      margin-bottom:50px;
-    }
-    .grid{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-      gap:30px;
-    }
-    .card{
-      background:white;
-      padding:35px;
-      border-radius:18px;
-      box-shadow:0 5px 20px rgba(0,0,0,0.06);
-    }
-    .card h3{
-      margin-bottom:15px;
-      font-size:24px;
-    }
-    .book{
-      background:white;
-      padding:50px;
-      border-radius:20px;
-      text-align:center;
-      box-shadow:0 5px 20px rgba(0,0,0,0.06);
-    }
-    .book h3{
-      font-size:34px;
-      margin-bottom:20px;
-    }
-    .footer{
-      background:#1d2a44;
-      color:white;
-      text-align:center;
-      padding:50px 20px;
-      margin-top:80px;
-    }
-    @media(max-width:768px){
-      header{
-        flex-direction:column;
-      }
-      nav{
-        margin-top:15px;
-      }
-      .hero h1{
-        font-size:42px;
-      }
-      .hero p{
-        font-size:18px;
-      }
-      .section-title{
-        font-size:32px;
-      }
-    }
-  </style>
+</style>
 </head>
 <body>
+<div id="top">
+
 <header>
-  <div class="logo">
-    Upbring Daily
-  </div>
-  <nav>
-    <a href="#">Home</a>
-    <a href="#">Resources</a>
-    <a href="#">Books</a>
-    <a href="mailto:hello@upbringdaily.com">Contact</a>
+  <nav class="wrap">
+    <a href="#top" class="brand">
+      <span class="brand-mark">U</span>
+      <span class="brand-name">Upbring <i>Daily</i></span>
+    </a>
+    <div class="nav-links">
+      <a href="#about">Our Story</a>
+      <a href="#book">The Book</a>
+      <a href="#resources">Resources</a>
+      <a href="#community">Community</a>
+      <a href="https://whatsapp.com/channel/0029Vb7gKDbG3R3qmlIybQ1K" target="_blank" rel="noopener" class="nav-cta">Join Community</a>
+    </div>
+    <button class="menu-btn" aria-label="Menu" onclick="document.getElementById('mm').classList.toggle('open')"><span></span></button>
   </nav>
+  <div class="mobile-menu" id="mm">
+    <a href="#about" onclick="document.getElementById('mm').classList.remove('open')">Our Story</a>
+    <a href="#book" onclick="document.getElementById('mm').classList.remove('open')">The Book</a>
+    <a href="#resources" onclick="document.getElementById('mm').classList.remove('open')">Resources</a>
+    <a href="#community" onclick="document.getElementById('mm').classList.remove('open')">Community</a>
+    <a href="https://whatsapp.com/channel/0029Vb7gKDbG3R3qmlIybQ1K" target="_blank" rel="noopener" class="nav-cta">Join the Community</a>
+  </div>
 </header>
-<section class="hero">
 
-<h1>Build Real Faith Into Your Child's Everyday Life</h1>
-
-<p>
-A simple daily rhythm for busy Christian parents.
-Practical biblical resources, family discipleship tools,
-and encouragement to help you raise children who know and follow Christ.
-</p>
-
-<div class="hero-buttons">
-
-<a class="button"
-href="https://whatsapp.com/channel/0029Vb7gKDbG3R3qmlIybQ1K"
-target="_blank">
-Free 3-Day Parenting Plan
-</a>
-
-<a class="button secondary"
-href="https://upbringdaily.beehiiv.com/subscribe"
-target="_blank">
-Join Email Updates
-</a>
-
-</div>
-
-<p class="trust-line">
-✓ Biblical &nbsp;&nbsp;
-✓ Practical &nbsp;&nbsp;
-✓ Family-Focused &nbsp;&nbsp;
-✓ Christ-Centered
-</p>
-
-</section>
-<section class="section">
-  <h2 class="section-title">
-    What We Offer
-  </h2>
-  <p class="section-subtitle">
-    Practical resources designed to strengthen families,
-    deepen faith, and build Christ-centered homes.
-  </p>
-  <div class="grid">
-    <div class="card">
-      <h3>Faith-Based Parenting</h3>
-      <p>
-        Biblical guidance for modern parents navigating
-        discipleship, culture, and family life.
-      </p>
+<!-- HERO -->
+<section class="hero wrap">
+  <div class="hero-copy">
+    <div class="eyebrow">Deuteronomy 6:6-7</div>
+    <h1>Raising <i>rooted</i> families in Christ, one ordinary day at a time.</h1>
+    <p class="hero-sub">A home for everyday Christian parents. No theology degree required, just simple, faithful support, devotionals, and a warm community to help you build a strong foundation that your children will carry for life.</p>
+    <div class="btn-row">
+      <a href="https://whatsapp.com/channel/0029Vb7gKDbG3R3qmlIybQ1K" target="_blank" rel="noopener" class="btn btn-wa"><span class="dot"></span>Join the WhatsApp community</a>
+      <a href="#resources" class="btn btn-ghost">Free resources</a>
     </div>
-    <div class="card">
-      <h3>Daily Discipleship</h3>
-      <p>
-        Helping families build simple daily rhythms rooted
-        in Scripture, prayer, and worship.
-      </p>
-    </div>
-    <div class="card">
-      <h3>Books & Resources</h3>
-      <p>
-        Carefully created devotionals, journals, and
-        discipleship tools for Christian families.
-      </p>
+    <p class="hero-note">Free devotionals &middot; A growing community of Christian families</p>
+  </div>
+  <div class="hero-art">
+    <div class="frame">
+      <img src="book-cover.png.jpg" alt="What Your Children Will Remember, a 40-day devotional for fathers, Upbring Daily">
+      <div class="badge">40-Day Devotional for Fathers</div>
     </div>
   </div>
 </section>
-<section class="section">
-  <div class="book">
-    <h2>Best Present for Fathers</h2>
 
+<!-- MISSION -->
+<section class="mission" id="about">
+  <div class="inner">
+    <div class="diamond-rule"><span class="rule"></span><span class="dia"></span><span class="rule"></span></div>
+    <blockquote>&ldquo;These commandments&hellip; are to be on your hearts. Impress them on your children. Talk about them when you sit at home and when you walk along the road.&rdquo;</blockquote>
+    <p>Faith isn&rsquo;t formed in a single grand moment, it&rsquo;s built in the small, daily rhythms of an ordinary home. You don&rsquo;t need a theology degree or years of Bible college, just a willing heart. Upbring Daily walks beside everyday parents with simple, faithful support to build a strong Christian foundation, so your children grow up rooted in Christ and never lose their way.</p>
+  </div>
+</section>
 
-  <img src="book-cover.png.jpg" alt="Book Cover"
-  style="width:240px;border-radius:14px;
-  margin-bottom:30px;
-  box-shadow:0 10px 25px rgba(0,0,0,0.15);">
-  <h3>
-    What Your Children Will Remember
-  </h3>
-  <p>
-    A Christ-centered parenting resource focused on
-    intentional family discipleship and lasting spiritual legacy.
-  </p>
-  <a class="button" href="https://amzn.eu/d/04zI7nNh" target="_blank">
-    View on Amazon
-  </a>
-</div>
- 
-</div>
+<!-- PHOTO BAND -->
+<section class="photo-band">
+  <img src="family-home.jpg" alt="A Christian family sharing a meal and prayer together at home" onerror="this.parentElement.classList.add('noimg');this.remove();">
+  <div class="photo-band-overlay">
+    <p class="kicker">The path home</p>
+    <p class="photo-band-quote">Walk the road with them while they are young, and they will not lose their way.</p>
+  </div>
+</section>
 
-</section><section class="section">
-  <h2 class="section-title">
-    Join the Upbring Daily Community
-  </h2>
-  <p class="section-subtitle">
-    Get free parenting resources, biblical encouragement,
-    family discipleship tools, and updates from Upbring Daily.
-  </p>
+<!-- PILLARS -->
+<section class="section wrap">
+  <div class="section-head">
+    <p class="kicker">Wherever you are</p>
+    <h2 class="h2">For every season of family life.</h2>
+  </div>
   <div class="grid">
-    <div class="card">
-      <h3>Free Resources</h3>
-      <p>
-        Download free Christ-centered parenting and
-        family discipleship resources.
-      </p>
-      <a class="button" href="#">
-        Free Downloads
-      </a>
-    </div>
-    <div class="card">
-      <h3>Join WhatsApp</h3>
-      <p>
-        Receive encouragement, parenting insights,
-        and ministry updates directly on WhatsApp.
-      </p>
-      <a class="button" href="https://whatsapp.com/channel/0029Vb7gKDbG3R3qmlIybQ1K" target="_blank">
-        Join Channel
-      </a>
-    </div>
-    <div class="card">
-      <h3>Email Updates</h3>
-      <p>
-        Stay connected with new books, devotionals,
-        parenting content, and family resources.
-      </p>
-      <a class="button" href="#">
-        Subscribe
-      </a>
+    <div class="card"><span class="num">01</span><h3>Preparing for Marriage</h3><p>Build a faith-centered foundation before the wedding day, and for the years after it.</p></div>
+    <div class="card"><span class="num sage">02</span><h3>Raising Children</h3><p>Daily discipleship for the long road of shaping character, habits, and a heart for God.</p></div>
+    <div class="card"><span class="num">03</span><h3>For Fathers</h3><p>Lead your home with presence and emotional honesty, the heart of our flagship devotional.</p></div>
+    <div class="card"><span class="num sage">04</span><h3>For Mothers</h3><p>Strength, rest, and spiritual nourishment for the daily, often unseen work of mothering.</p></div>
+  </div>
+</section>
+
+<!-- BOOK -->
+<section class="book" id="book">
+  <div class="inner wrap">
+    <div class="book-art"><img src="book-cover.png.jpg" alt="What Your Children Will Remember book cover"></div>
+    <div class="book-copy">
+      <div class="gift-badge">The Perfect Father&rsquo;s Day Gift</div>
+      <h2>What Your Children Will Remember</h2>
+      <p class="tag">A 40-day devotional journey for fathers</p>
+      <p class="desc">This Father&rsquo;s Day, give the man in your life more than another tie or mug, give him 40 days of presence, grace, and biblical wisdom. It&rsquo;s for men who want to lead their homes well, even when they feel imperfect and unprepared.</p>
+      <div class="pills">
+        <span><span class="dia"></span>Presence</span>
+        <span><span class="dia"></span>Grace &amp; wisdom</span>
+        <span><span class="dia"></span>Emotional honesty</span>
+        <span><span class="dia"></span>Biblical grounding</span>
+      </div>
+      <a href="https://amzn.eu/d/04zI7nNh" target="_blank" rel="noopener" class="btn btn-gold">Get it for Father&rsquo;s Day on Amazon</a>
     </div>
   </div>
 </section>
-<footer class="footer">
-  <p>
-    © 2026 Upbring Daily • All Rights Reserved
-  </p>
+
+<!-- RESOURCES -->
+<section class="section wrap" id="resources">
+  <div class="res-head">
+    <div class="section-head" style="margin-bottom:0;max-width:42ch">
+      <p class="kicker">Free for your home</p>
+      <h2 class="h2">Resources to disciple your family.</h2>
+    </div>
+    <a href="#join" class="res-link">Get them free, join the list &rarr;</a>
+  </div>
+  <div class="res-grid">
+    <a href="#join" class="res-card"><span class="free">Free &middot; PDF</span><h3>Prayer Guides</h3><p>Simple, printable prompts to pray over your spouse and children.</p></a>
+    <a href="#join" class="res-card"><span class="free">Free &middot; PDF</span><h3>Family Devotionals</h3><p>Short readings to gather around the table and grow in faith together.</p></a>
+    <a href="#join" class="res-card"><span class="free">Free &middot; PDF</span><h3>Discipleship PDFs</h3><p>Practical guides for building rhythms of faith into everyday family life.</p></a>
+    <a href="#join" class="res-card"><span class="free">Free &middot; PDF</span><h3>Scripture Printables</h3><p>Verse cards and wall prints to keep God&rsquo;s word in front of your family.</p></a>
+  </div>
+</section>
+
+<!-- COMMUNITY -->
+<section class="community" id="community">
+  <div class="inner">
+    <div class="community-card">
+      <span class="community-icon"><span></span></span>
+      <h2>Where we share the free resources.</h2>
+      <p>Our WhatsApp channel is the heartbeat of Upbring Daily, it&rsquo;s where we share every free resource, daily encouragement, prayer, and updates first. A quiet, hopeful corner of the internet for families raising children in faith.</p>
+      <a href="https://whatsapp.com/channel/0029Vb7gKDbG3R3qmlIybQ1K" target="_blank" rel="noopener" class="btn btn-wa big"><span class="dot"></span>Join the WhatsApp community</a>
+    </div>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<section class="news" id="join">
+  <div class="news-card">
+    <p class="kicker">Free Resources</p>
+    <h2>Get the free resource pack, straight to your inbox.</h2>
+    <p>Join the mailing list and we&rsquo;ll send you our prayer guides, family devotionals, and Scripture printables, completely free, plus first access to every new resource we create.</p>
+    <ul class="news-list">
+      <li><span class="ck">&#10003;</span>Prayer guides</li>
+      <li><span class="ck">&#10003;</span>Family devotionals</li>
+      <li><span class="ck">&#10003;</span>Scripture printables</li>
+      <li><span class="ck">&#10003;</span>New resources first</li>
+    </ul>
+    <form action="https://upbringdaily.beehiiv.com/subscribe" method="get" target="_blank">
+      <input type="email" name="email" required placeholder="you@email.com">
+      <button type="submit">Send me the free resources</button>
+    </form>
+    <p class="fine">Free forever &middot; Powered by Beehiiv &middot; Unsubscribe anytime.</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="inner wrap">
+    <div class="foot-grid">
+      <div class="foot-about">
+        <a href="#top" class="foot-brand"><span class="brand-mark">U</span><span>Upbring Daily</span></a>
+        <p>Christian parenting, family discipleship, and faith-based resources, for the family you&rsquo;re raising, one ordinary day at a time.</p>
+      </div>
+      <div class="foot-col">
+        <p class="t">Explore</p>
+        <div class="links">
+          <a href="#about">Our Story</a>
+          <a href="#book">The Book</a>
+          <a href="#resources">Resources</a>
+          <a href="#community">Community</a>
+        </div>
+      </div>
+      <div class="foot-col">
+        <p class="t">Connect</p>
+        <div class="links">
+          <a href="https://whatsapp.com/channel/0029Vb7gKDbG3R3qmlIybQ1K" target="_blank" rel="noopener">WhatsApp Channel</a>
+          <a href="mailto:hello@upbringdaily.com">hello@upbringdaily.com</a>
+          <a href="https://upbringdaily.beehiiv.com/subscribe" target="_blank" rel="noopener">Email Updates</a>
+          <a href="https://amzn.eu/d/04zI7nNh" target="_blank" rel="noopener">Get the Book</a>
+        </div>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <p>&copy; 2026 Upbring Daily. All rights reserved.</p>
+      <p class="verse">&ldquo;Impress them on your children.&rdquo; &middot; Deut. 6:7</p>
+    </div>
+  </div>
 </footer>
+
+</div>
 </body>
 </html>
