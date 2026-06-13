@@ -119,16 +119,24 @@ header.scrolled{
   border-color:rgba(28,46,74,.12);
 }
 nav{display:flex;align-items:center;justify-content:space-between;gap:18px;height:74px;}
-.brand{display:flex;align-items:center;gap:11px;text-decoration:none;}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;}
+.brand-logo{
+  width:46px;height:46px;flex:none;
+  border-radius:50%;
+  transition:transform .25s var(--spring),box-shadow .25s;
+  object-fit:contain;
+}
+.brand:hover .brand-logo{transform:scale(1.07);box-shadow:0 4px 14px rgba(28,46,74,.2);}
+/* Fallback mark shown if logo.png not found */
 .brand-mark{
-  width:38px;height:38px;border-radius:50%;
+  width:46px;height:46px;border-radius:50%;
   background:#1C2E4A;color:#F7F1E7;
   display:grid;place-items:center;
   font-family:'Newsreader',serif;font-weight:600;font-size:1.2rem;flex:none;
   transition:transform .25s var(--spring),box-shadow .25s;
 }
 .brand:hover .brand-mark{transform:scale(1.08);box-shadow:0 4px 14px rgba(28,46,74,.3);}
-.brand-name{font-family:'Newsreader',serif;font-size:1.4rem;font-weight:600;color:#1C2E4A;}
+.brand-name{font-family:'Newsreader',serif;font-size:1.3rem;font-weight:600;color:#1C2E4A;line-height:1.1;}
 .brand-name i{font-style:italic;color:#B0801E;font-weight:500;}
 .nav-links{display:flex;align-items:center;gap:28px;}
 .nav-links a{
@@ -542,6 +550,37 @@ nav{display:flex;align-items:center;justify-content:space-between;gap:18px;heigh
 .news button:active{transform:scale(.97);}
 .news .fine{margin-top:22px;font-size:.85rem;color:#9C9079;}
 
+/* ── CONNECT BUTTONS ────────────────────────────────────────── */
+.connect-btns{display:flex;flex-direction:column;gap:14px;width:100%;margin:0 auto 8px;}
+.connect-btn{
+  display:flex;align-items:center;gap:14px;
+  padding:18px 22px;border-radius:var(--radius-md);
+  text-decoration:none;font-weight:600;font-size:1rem;
+  transition:transform .18s var(--spring),box-shadow .18s;
+  position:relative;
+  clip-path:inset(0 round var(--radius-md));
+}
+.connect-btn::after{
+  content:"";position:absolute;inset:0;
+  background:rgba(255,255,255,.12);
+  opacity:0;transition:opacity .2s;
+}
+.connect-btn:hover::after{opacity:1;}
+.connect-btn:hover{transform:translateY(-3px);}
+.connect-btn:active{transform:scale(.97);}
+.connect-btn svg{flex:none;}
+.connect-btn-text{display:flex;flex-direction:column;gap:2px;}
+.connect-sub{font-size:.78rem;font-weight:400;opacity:.7;}
+.connect-gumroad{background:#1C2E4A;color:#FBF7EF;box-shadow:0 8px 24px rgba(28,46,74,.25);}
+.connect-gumroad:hover{box-shadow:0 14px 32px rgba(28,46,74,.32);}
+.connect-whatsapp{background:#1FA855;color:#fff;box-shadow:0 8px 24px rgba(31,168,85,.3);}
+.connect-whatsapp:hover{box-shadow:0 14px 32px rgba(31,168,85,.4);}
+.connect-instagram{
+  background:linear-gradient(135deg,#f09433,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888);
+  color:#fff;box-shadow:0 8px 24px rgba(220,39,67,.28);
+}
+.connect-instagram:hover{box-shadow:0 14px 32px rgba(220,39,67,.38);}
+
 /* ── FOOTER ─────────────────────────────────────────────────── */
 footer{background:#16243A;color:#C2CAD8;position:relative;overflow:hidden;}
 footer::before{
@@ -597,7 +636,8 @@ footer .inner{padding:clamp(60px,8vw,92px) 0 0;}
 <header id="site-header">
   <nav class="wrap">
     <a href="#top" class="brand">
-      <span class="brand-mark">U</span>
+      <img src="logo.png" alt="Upbring Daily logo" class="brand-logo" onerror="this.style.display='none';this.nextElementSibling.style.display='grid';">
+      <span class="brand-mark" style="display:none">U</span>
       <span class="brand-name">Upbring <i>Daily</i></span>
     </a>
     <div class="nav-links">
@@ -778,23 +818,33 @@ footer .inner{padding:clamp(60px,8vw,92px) 0 0;}
   </div>
 </section>
 
-<!-- ── NEWSLETTER ─────────────────────────────────────────────── -->
+<!-- ── CONNECT ─────────────────────────────────────────────────── -->
 <section class="news" id="join">
   <div class="news-card reveal-scale">
     <p class="kicker">Free Resources</p>
-    <h2>Get the free resource pack, straight to your inbox.</h2>
-    <p>Join the mailing list and we&rsquo;ll send you our prayer guides, family devotionals, and Scripture printables&nbsp;&mdash; completely free, plus first access to every new resource we create.</p>
+    <h2>Get the free resource pack — your way.</h2>
+    <p>No email forms. Just pick how you&rsquo;d like to connect and the free resources are yours&nbsp;&mdash; prayer guides, family devotionals, Scripture printables, and more.</p>
     <ul class="news-list">
       <li><span class="ck">&#10003;</span>Prayer guides</li>
       <li><span class="ck">&#10003;</span>Family devotionals</li>
       <li><span class="ck">&#10003;</span>Scripture printables</li>
       <li><span class="ck">&#10003;</span>New resources first</li>
     </ul>
-    <form action="https://upbringdaily.beehiiv.com/subscribe" method="get" target="_blank">
-      <input type="email" name="email" required placeholder="you@email.com" autocomplete="email">
-      <button type="submit">Send me the free resources</button>
-    </form>
-    <p class="fine">Free forever &middot; Powered by Beehiiv &middot; Unsubscribe anytime.</p>
+    <div class="connect-btns">
+      <a href="https://upbring.gumroad.com/subscribe" target="_blank" rel="noopener" class="connect-btn connect-gumroad">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        <span class="connect-btn-text">Download free resources<span class="connect-sub">via Gumroad</span></span>
+      </a>
+      <a href="https://whatsapp.com/channel/0029Vb7gKDbG3R3qmlIybQ1K" target="_blank" rel="noopener" class="connect-btn connect-whatsapp">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+        <span class="connect-btn-text">Join the community<span class="connect-sub">via WhatsApp</span></span>
+      </a>
+      <a href="https://www.instagram.com/upbringdaily" target="_blank" rel="noopener" class="connect-btn connect-instagram">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        <span class="connect-btn-text">Follow along<span class="connect-sub">@upbringdaily</span></span>
+      </a>
+    </div>
+    <p class="fine">Everything is free &middot; No sign-up required &middot; Just click and connect.</p>
   </div>
 </section>
 
@@ -804,7 +854,8 @@ footer .inner{padding:clamp(60px,8vw,92px) 0 0;}
     <div class="foot-grid">
       <div class="foot-about">
         <a href="#top" class="foot-brand">
-          <span class="brand-mark">U</span>
+          <img src="logo.png" alt="Upbring Daily logo" class="brand-logo" style="background:#F7F1E7;border-radius:50%;padding:2px;" onerror="this.style.display='none';this.nextElementSibling.style.display='grid';">
+          <span class="brand-mark" style="display:none;background:#C9A24B;color:#16243A;">U</span>
           <span>Upbring Daily</span>
         </a>
         <p>Christian parenting, family discipleship, and faith-based resources&nbsp;&mdash; for the family you&rsquo;re raising, one ordinary day at a time.</p>
