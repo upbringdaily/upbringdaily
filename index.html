@@ -12,15 +12,14 @@
 <meta property="og:url" content="https://upbringdaily.com">
 <meta property="og:image" content="book-cover.png.jpg">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="canonical" href="https://upbringdaily.com/">
-<link rel="icon" type="image/svg+xml" href="favicon.svg">
-<link rel="alternate icon" href="favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Organization","name":"Upbring Daily","url":"https://upbringdaily.com","email":"hello@upbringdaily.com","description":"Christian parenting, family discipleship, and faith-based resources for fathers, mothers, and growing families.","makesOffer":{"@type":"Offer","itemOffered":{"@type":"Book","name":"What Your Children Will Remember","bookFormat":"https://schema.org/Paperback","about":"A 40-day devotional journey for fathers."}}}
 </script>
 <style>
+/* ── RESET & BASE ───────────────────────────────────────────── */
 *{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;}
 body{font-family:'Hanken Grotesk',system-ui,Arial,sans-serif;background:#F7F1E7;color:#463F35;font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
@@ -28,177 +27,574 @@ body{font-family:'Hanken Grotesk',system-ui,Arial,sans-serif;background:#F7F1E7;
 a{color:inherit;}
 img{max-width:100%;display:block;}
 .wrap{width:min(92%,1140px);margin:0 auto;}
-@keyframes floaty{0%,100%{transform:translateY(0);}50%{transform:translateY(-9px);}}
 
-/* NAV */
-header{position:sticky;top:0;z-index:50;background:rgba(247,241,231,.88);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid rgba(28,46,74,.08);}
+/* ── DESIGN TOKENS ──────────────────────────────────────────── */
+:root{
+  --navy:#1C2E4A;
+  --navy-deep:#16243A;
+  --navy-mid:#213A5C;
+  --gold:#C9A24B;
+  --gold-light:#E2C879;
+  --gold-mid:#B0801E;
+  --cream:#F7F1E7;
+  --cream-mid:#EFE4D2;
+  --cream-dark:#E4D5BC;
+  --text:#463F35;
+  --text-mid:#5C5446;
+  --text-muted:#8A7E6C;
+  --text-light:#9C9079;
+  --card-bg:#FCF8F0;
+  --green:#1FA855;
+  --shadow-sm:0 2px 8px rgba(28,46,74,.08);
+  --shadow-md:0 8px 24px rgba(28,46,74,.12);
+  --shadow-lg:0 20px 48px rgba(28,46,74,.18);
+  --shadow-xl:0 32px 72px rgba(28,46,74,.24);
+  --radius-sm:12px;
+  --radius-md:18px;
+  --radius-lg:26px;
+  --radius-full:999px;
+  --transition:cubic-bezier(.4,0,.2,1);
+  --spring:cubic-bezier(.34,1.56,.64,1);
+}
+
+/* ── ANIMATIONS ─────────────────────────────────────────────── */
+@keyframes floaty{0%,100%{transform:translateY(0);}50%{transform:translateY(-9px);}}
+@keyframes shimmer{0%{background-position:200% center;}100%{background-position:-200% center;}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(28px);}to{opacity:1;transform:translateY(0);}}
+@keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
+@keyframes scaleIn{from{opacity:0;transform:scale(.94);}to{opacity:1;transform:scale(1);}}
+@keyframes slideRight{from{transform:scaleX(0);}to{transform:scaleX(1);}}
+@keyframes pulse-ring{0%{box-shadow:0 0 0 0 rgba(31,168,85,.35);}70%{box-shadow:0 0 0 12px rgba(31,168,85,0);}100%{box-shadow:0 0 0 0 rgba(31,168,85,0);}}
+@keyframes grain{0%,100%{transform:translate(0,0);}10%{transform:translate(-2%,-3%);}20%{transform:translate(-4%,2%);}30%{transform:translate(3%,-4%);}40%{transform:translate(-1%,5%);}50%{transform:translate(4%,1%);}60%{transform:translate(-3%,4%);}70%{transform:translate(2%,-2%);}80%{transform:translate(-4%,3%);}90%{transform:translate(3%,2%);}}
+
+/* Scroll-reveal base — hidden until JS fires */
+.reveal{opacity:0;transform:translateY(32px);transition:opacity .7s var(--transition),transform .7s var(--transition);}
+.reveal.visible{opacity:1;transform:translateY(0);}
+.reveal-scale{opacity:0;transform:scale(.96);transition:opacity .65s var(--transition),transform .65s var(--spring);}
+.reveal-scale.visible{opacity:1;transform:scale(1);}
+.reveal-left{opacity:0;transform:translateX(-28px);transition:opacity .7s var(--transition),transform .7s var(--transition);}
+.reveal-left.visible{opacity:1;transform:translateX(0);}
+.reveal-right{opacity:0;transform:translateX(28px);transition:opacity .7s var(--transition),transform .7s var(--transition);}
+.reveal-right.visible{opacity:1;transform:translateX(0);}
+.stagger-1{transition-delay:.1s!important;}
+.stagger-2{transition-delay:.2s!important;}
+.stagger-3{transition-delay:.3s!important;}
+.stagger-4{transition-delay:.4s!important;}
+
+/* Hero elements animate in on page load, not on scroll */
+.hero-load{opacity:0;animation:fadeUp .8s var(--transition) forwards;}
+.hero-load.d1{animation-delay:.05s;}
+.hero-load.d2{animation-delay:.18s;}
+.hero-load.d3{animation-delay:.32s;}
+.hero-load.d4{animation-delay:.46s;}
+.hero-load.d5{animation-delay:.22s;animation-name:scaleIn;}
+
+/* Reduced motion */
+@media(prefers-reduced-motion:reduce){
+  .reveal,.reveal-scale,.reveal-left,.reveal-right{opacity:1;transform:none;transition:none;}
+  *{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;}
+}
+
+/* ── GRAIN TEXTURE overlay (subtle paper feel) ──────────────── */
+body::before{
+  content:"";
+  position:fixed;inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  background-size:200px 200px;
+  pointer-events:none;z-index:9999;opacity:.4;
+  animation:grain 8s steps(10) infinite;
+}
+
+/* ── NAV ────────────────────────────────────────────────────── */
+header{
+  position:sticky;top:0;z-index:200;
+  background:rgba(247,241,231,.85);
+  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  border-bottom:1px solid rgba(28,46,74,.07);
+  transition:background .3s var(--transition),box-shadow .3s var(--transition),border-color .3s;
+}
+header.scrolled{
+  background:rgba(247,241,231,.96);
+  box-shadow:0 4px 24px rgba(28,46,74,.1);
+  border-color:rgba(28,46,74,.12);
+}
 nav{display:flex;align-items:center;justify-content:space-between;gap:18px;height:74px;}
 .brand{display:flex;align-items:center;gap:11px;text-decoration:none;}
-.brand-mark{width:38px;height:38px;border-radius:50%;background:#1C2E4A;color:#F7F1E7;display:grid;place-items:center;font-family:'Newsreader',serif;font-weight:600;font-size:1.2rem;flex:none;}
+.brand-mark{
+  width:38px;height:38px;border-radius:50%;
+  background:#1C2E4A;color:#F7F1E7;
+  display:grid;place-items:center;
+  font-family:'Newsreader',serif;font-weight:600;font-size:1.2rem;flex:none;
+  transition:transform .25s var(--spring),box-shadow .25s;
+}
+.brand:hover .brand-mark{transform:scale(1.08);box-shadow:0 4px 14px rgba(28,46,74,.3);}
 .brand-name{font-family:'Newsreader',serif;font-size:1.4rem;font-weight:600;color:#1C2E4A;}
 .brand-name i{font-style:italic;color:#B0801E;font-weight:500;}
 .nav-links{display:flex;align-items:center;gap:28px;}
-.nav-links a{text-decoration:none;color:#463F35;font-weight:500;font-size:.97rem;white-space:nowrap;}
+.nav-links a{
+  text-decoration:none;color:#463F35;font-weight:500;font-size:.97rem;
+  position:relative;padding-bottom:3px;white-space:nowrap;
+  transition:color .2s;
+}
+.nav-links a::after{
+  content:"";position:absolute;bottom:0;left:0;right:0;
+  height:1.5px;background:#C9A24B;
+  transform:scaleX(0);transform-origin:right;
+  transition:transform .25s var(--transition);
+}
 .nav-links a:hover{color:#1C2E4A;}
-.nav-cta{background:#213A5C;color:#FBF7EF!important;padding:11px 22px;border-radius:999px;font-weight:600;font-size:.94rem;}
-.nav-cta:hover{background:#16243A;}
-.menu-btn{display:none;background:transparent;border:1px solid rgba(28,46,74,.18);border-radius:11px;width:46px;height:44px;cursor:pointer;align-items:center;justify-content:center;}
-.menu-btn span{display:block;width:20px;height:2px;background:#1C2E4A;border-radius:2px;box-shadow:0 6px 0 #1C2E4A,0 -6px 0 #1C2E4A;}
-.mobile-menu{display:none;border-top:1px solid rgba(28,46,74,.08);background:#F7F1E7;padding:14px 4% 22px;flex-direction:column;gap:6px;}
+.nav-links a:hover::after{transform:scaleX(1);transform-origin:left;}
+.nav-cta{
+  background:#213A5C;color:#FBF7EF!important;
+  padding:11px 22px;border-radius:var(--radius-full);
+  font-weight:600;font-size:.94rem;
+  box-shadow:0 4px 14px rgba(28,46,74,.2);
+  transition:background .2s,box-shadow .2s,transform .15s var(--spring)!important;
+}
+.nav-cta::after{display:none!important;}
+.nav-cta:hover{background:#16243A;box-shadow:0 6px 20px rgba(28,46,74,.3);transform:translateY(-1px);}
+.nav-cta:active{transform:translateY(0);}
+.menu-btn{
+  display:none;background:transparent;
+  border:1px solid rgba(28,46,74,.18);border-radius:11px;
+  width:46px;height:44px;cursor:pointer;
+  align-items:center;justify-content:center;
+  transition:background .2s,border-color .2s;
+}
+.menu-btn:hover{background:rgba(28,46,74,.06);border-color:rgba(28,46,74,.3);}
+.menu-btn span{display:block;width:20px;height:2px;background:#1C2E4A;border-radius:2px;box-shadow:0 6px 0 #1C2E4A,0 -6px 0 #1C2E4A;transition:box-shadow .2s;}
+.mobile-menu{
+  display:none;border-top:1px solid rgba(28,46,74,.08);
+  background:#F7F1E7;padding:14px 4% 22px;
+  flex-direction:column;gap:6px;
+}
 .mobile-menu.open{display:flex;}
-.mobile-menu a{text-decoration:none;color:#1C2E4A;font-weight:500;font-size:1.05rem;padding:11px 4px;border-bottom:1px solid rgba(28,46,74,.07);}
+.mobile-menu a{
+  text-decoration:none;color:#1C2E4A;font-weight:500;font-size:1.05rem;
+  padding:11px 4px;border-bottom:1px solid rgba(28,46,74,.07);
+  transition:color .2s,padding-left .2s;
+}
+.mobile-menu a:hover{color:#B0801E;padding-left:8px;}
 .mobile-menu .nav-cta{margin-top:10px;text-align:center;padding:14px;border-bottom:none;}
 
-/* HERO */
-.hero{display:flex;flex-wrap:wrap;align-items:center;gap:clamp(32px,5vw,64px);padding:clamp(48px,7vw,92px) 0 clamp(40px,6vw,72px);}
-.hero-copy{flex:1 1 420px;min-width:300px;}
-.eyebrow{display:inline-flex;align-items:center;gap:9px;color:#B0801E;font-size:.8rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;margin-bottom:22px;}
+/* ── HERO ───────────────────────────────────────────────────── */
+.hero{
+  display:flex;flex-wrap:wrap;align-items:center;
+  gap:clamp(32px,5vw,64px);
+  padding:clamp(48px,7vw,100px) 0 clamp(40px,6vw,80px);
+  position:relative;
+}
+
+/* Decorative cross pattern */
+.hero::before{
+  content:"";position:absolute;top:0;right:-4%;width:55%;height:100%;
+  background-image:radial-gradient(circle,rgba(201,162,75,.07) 1.5px,transparent 1.5px);
+  background-size:28px 28px;
+  pointer-events:none;z-index:0;border-radius:0 0 40% 0;
+}
+
+.hero-copy{flex:1 1 420px;min-width:300px;position:relative;z-index:1;}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:9px;
+  color:#B0801E;font-size:.8rem;font-weight:600;
+  letter-spacing:.16em;text-transform:uppercase;margin-bottom:22px;
+}
 .eyebrow .rule{width:22px;height:1.5px;background:#C9A24B;}
-.hero h1{font-family:'Newsreader',serif;font-weight:500;color:#1C2E4A;font-size:clamp(2.4rem,6vw,4rem);line-height:1.04;letter-spacing:-.01em;margin-bottom:22px;text-wrap:balance;}
+.hero h1{
+  font-family:'Newsreader',serif;font-weight:500;
+  color:#1C2E4A;font-size:clamp(2.4rem,6vw,4.1rem);
+  line-height:1.04;letter-spacing:-.01em;
+  margin-bottom:22px;text-wrap:balance;
+}
 .hero h1 i{font-style:italic;color:#B0801E;}
-.hero-sub{font-size:clamp(1.05rem,2.3vw,1.2rem);color:#5C5446;max-width:34ch;margin-bottom:32px;text-wrap:pretty;}
+.hero-sub{font-size:clamp(1.05rem,2.3vw,1.2rem);color:#5C5446;max-width:34ch;margin-bottom:36px;text-wrap:pretty;line-height:1.72;}
 .btn-row{display:flex;flex-wrap:wrap;gap:14px;}
-.btn{display:inline-flex;align-items:center;gap:10px;text-decoration:none;padding:15px 26px;border-radius:999px;font-weight:600;font-size:1rem;}
-.btn-wa{background:#1FA855;color:#fff;box-shadow:0 2px 6px rgba(31,168,85,.28);}
-.btn-wa:hover{background:#1c9a4d;}
-.btn-wa .dot{width:9px;height:9px;border-radius:50%;background:#fff;}
-.btn-ghost{background:transparent;color:#1C2E4A;border:1.5px solid rgba(28,46,74,.22);}
-.btn-ghost:hover{background:rgba(28,46,74,.05);}
-.hero-note{margin-top:24px;font-size:.9rem;color:#8A7E6C;}
-.hero-art{flex:1 1 360px;min-width:280px;display:grid;place-items:center;}
-.trust-card{background:#FCF8F0;border:1px solid rgba(28,46,74,.1);border-radius:22px;padding:28px;box-shadow:0 20px 48px -18px rgba(28,46,74,.22);width:100%;max-width:420px;}
-.trust-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px;}
-.trust-block{background:#F0EAE0;border-radius:14px;padding:20px 18px;display:flex;flex-direction:column;justify-content:center;gap:6px;}
-.trust-block-accent{background:#1C2E4A;}
-.trust-num{font-family:'Newsreader',serif;font-size:3.2rem;font-weight:600;color:#C9A24B;line-height:1;}
-.trust-label{font-size:.82rem;color:#C8C0AE;font-weight:500;line-height:1.35;}
-.trust-pillars{display:flex;flex-direction:column;gap:5px;}
-.trust-pillars span{font-family:'Newsreader',serif;font-size:.97rem;font-weight:600;color:#1C2E4A;display:inline-flex;align-items:center;gap:7px;}
-.trust-pillars span::before{content:'';width:5px;height:5px;background:#C9A24B;transform:rotate(45deg);flex:none;}
-.trust-mission{font-size:.88rem;color:#5C5446;line-height:1.5;margin:0;}
-.trust-block-quote{background:#EFE4D2;}
-.trust-for-who{display:flex;flex-direction:column;gap:4px;}
-.trust-for-who .label{font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#8A7E6C;margin-bottom:6px;}
-.trust-for-who .line{display:inline-flex;align-items:center;gap:8px;font-family:'Newsreader',serif;font-size:1rem;color:#1C2E4A;font-weight:500;}
-.trust-for-who .line::before{content:'';width:5px;height:5px;background:#C9A24B;transform:rotate(45deg);flex:none;}
-.trust-for-who .called{color:#B0801E;font-style:italic;font-weight:600;}
-.trust-footer{text-align:center;}
+.btn{
+  display:inline-flex;align-items:center;gap:10px;
+  text-decoration:none;padding:15px 26px;
+  border-radius:var(--radius-full);font-weight:600;font-size:1rem;
+  cursor:pointer;transition:transform .18s var(--spring),box-shadow .18s;
+  position:relative;overflow:hidden;
+}
+.btn::after{
+  content:"";position:absolute;inset:0;
+  background:rgba(255,255,255,.15);
+  opacity:0;transition:opacity .2s;
+}
+.btn:hover::after{opacity:1;}
+.btn:active{transform:scale(.97)!important;}
+.btn-wa{background:#1FA855;color:#fff;box-shadow:0 4px 14px rgba(31,168,85,.3);}
+.btn-wa:hover{background:#1c9a4d;transform:translateY(-2px);box-shadow:0 8px 22px rgba(31,168,85,.4);}
+.btn-wa .dot{width:9px;height:9px;border-radius:50%;background:#fff;animation:pulse-ring 2s ease-out infinite;}
+.btn-ghost{
+  background:transparent;color:#1C2E4A;
+  border:1.5px solid rgba(28,46,74,.22);
+}
+.btn-ghost:hover{background:rgba(28,46,74,.05);transform:translateY(-2px);border-color:rgba(28,46,74,.4);}
+.hero-note{margin-top:26px;font-size:.9rem;color:#8A7E6C;}
+.hero-note strong{color:#B0801E;font-weight:600;}
 
-/* MISSION */
-.mission{background:#EFE4D2;}
-.mission .inner{width:min(92%,860px);margin:0 auto;padding:clamp(64px,8vw,108px) 0;text-align:center;}
-.diamond-rule{display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:30px;}
-.diamond-rule .rule{width:36px;height:1.5px;background:#C9A24B;}
+.hero-art{flex:1 1 360px;min-width:280px;display:grid;place-items:center;position:relative;z-index:1;}
+.hero-art .frame{
+  position:relative;padding:clamp(20px,4vw,44px);
+  background:radial-gradient(120% 120% at 50% 30%,#F4E9D2 0%,rgba(244,233,210,0) 70%);
+}
+/* Floating decorative ring */
+.hero-art .frame::before{
+  content:"";position:absolute;
+  top:50%;left:50%;
+  width:calc(100% + 40px);height:calc(100% + 40px);
+  transform:translate(-50%,-50%);
+  border-radius:50%;
+  border:1px solid rgba(201,162,75,.2);
+  pointer-events:none;
+}
+.hero-art img{
+  width:clamp(220px,32vw,330px);
+  border-radius:10px;
+  box-shadow:0 40px 80px -24px rgba(28,46,74,.5),0 10px 24px -8px rgba(28,46,74,.28),0 0 0 1px rgba(28,46,74,.06);
+  transition:transform .4s var(--spring),box-shadow .4s;
+}
+.hero-art:hover img{transform:translateY(-6px) scale(1.01);box-shadow:0 56px 96px -24px rgba(28,46,74,.5),0 16px 40px -8px rgba(28,46,74,.3),0 0 0 1px rgba(28,46,74,.06);}
+.badge{
+  position:absolute;bottom:8px;right:0;
+  background:#C9A24B;color:#1C2E4A;
+  font-weight:700;font-size:.82rem;letter-spacing:.04em;
+  padding:11px 17px;border-radius:var(--radius-full);
+  box-shadow:0 10px 28px -6px rgba(28,46,74,.4);
+  animation:floaty 5s ease-in-out infinite;
+  white-space:nowrap;
+}
+
+/* ── STATS BAR ──────────────────────────────────────────────── */
+.stats-bar{
+  background:#1C2E4A;
+  padding:clamp(22px,3vw,32px) 0;
+}
+.stats-inner{
+  display:flex;flex-wrap:wrap;
+  align-items:center;justify-content:center;
+  gap:clamp(20px,5vw,60px);
+}
+.stat-item{text-align:center;}
+.stat-num{
+  font-family:'Newsreader',serif;font-weight:500;
+  font-size:clamp(1.8rem,4vw,2.6rem);
+  color:#C9A24B;line-height:1;margin-bottom:4px;
+  letter-spacing:-.01em;
+}
+.stat-label{font-size:.82rem;color:rgba(237,230,214,.65);font-weight:500;letter-spacing:.08em;text-transform:uppercase;}
+.stat-divider{width:1px;height:44px;background:rgba(255,255,255,.1);flex:none;}
+
+/* ── MISSION ────────────────────────────────────────────────── */
+.mission{background:#EFE4D2;position:relative;overflow:hidden;}
+/* Warm radial glow */
+.mission::before{
+  content:"";position:absolute;top:-40%;left:50%;
+  transform:translateX(-50%);
+  width:80%;height:180%;
+  background:radial-gradient(ellipse,rgba(201,162,75,.1) 0%,transparent 60%);
+  pointer-events:none;
+}
+.mission .inner{width:min(92%,860px);margin:0 auto;padding:clamp(72px,9vw,120px) 0;text-align:center;position:relative;}
+.diamond-rule{display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:32px;}
+.diamond-rule .rule{width:44px;height:1.5px;background:#C9A24B;}
 .diamond-rule .dia{width:7px;height:7px;background:#C9A24B;transform:rotate(45deg);}
-.mission blockquote{font-family:'Newsreader',serif;font-style:italic;color:#1C2E4A;font-size:clamp(1.5rem,3.6vw,2.3rem);line-height:1.32;margin-bottom:28px;text-wrap:balance;}
-.mission p{color:#5C5446;font-size:clamp(1.02rem,2.2vw,1.15rem);max-width:60ch;margin:0 auto;text-wrap:pretty;}
+.mission blockquote{
+  font-family:'Newsreader',serif;font-style:italic;
+  color:#1C2E4A;font-size:clamp(1.5rem,3.6vw,2.4rem);
+  line-height:1.32;margin-bottom:30px;text-wrap:balance;
+}
+.mission blockquote::before{content:"\201C";font-size:1.2em;color:rgba(201,162,75,.4);line-height:0;vertical-align:-.25em;margin-right:3px;}
+.mission blockquote::after{content:"\201D";font-size:1.2em;color:rgba(201,162,75,.4);line-height:0;vertical-align:-.25em;margin-left:3px;}
+.mission p{color:#5C5446;font-size:clamp(1.02rem,2.2vw,1.16rem);max-width:60ch;margin:0 auto;text-wrap:pretty;line-height:1.75;}
 
-/* PHOTO BAND */
-.photo-band{position:relative;min-height:clamp(320px,42vw,520px);display:grid;place-items:center;overflow:hidden;background:#1C2E4A;}
-.photo-band img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 40%;}
-.photo-band::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(12,22,40,.10) 0%,rgba(12,22,40,.48) 50%,rgba(12,22,40,.72) 100%);}
+/* ── PHOTO BAND ─────────────────────────────────────────────── */
+.photo-band{
+  position:relative;min-height:clamp(320px,42vw,520px);
+  display:grid;place-items:center;overflow:hidden;background:#1C2E4A;
+}
+.photo-band img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 6s ease;}
+.photo-band:hover img{transform:scale(1.03);}
+.photo-band::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(20,33,54,.28),rgba(20,33,54,.7));
+}
 .photo-band.noimg{background:linear-gradient(135deg,#27406a 0%,#1C2E4A 55%,#152136 100%);}
-.photo-band.noimg::before{content:"Add a warm family photo \2014  upload as  family-home.jpg";position:absolute;bottom:16px;left:0;right:0;text-align:center;font-size:.74rem;letter-spacing:.06em;text-transform:uppercase;color:rgba(233,217,176,.45);z-index:4;}
+.photo-band.noimg::before{
+  content:"Add a warm family photo — upload as family-home.jpg";
+  position:absolute;bottom:16px;left:0;right:0;text-align:center;
+  font-size:.74rem;letter-spacing:.06em;text-transform:uppercase;
+  color:rgba(233,217,176,.45);z-index:4;
+}
 .photo-band-overlay{position:relative;z-index:3;text-align:center;max-width:32ch;padding:0 24px;}
 .photo-band-overlay .kicker{color:#E2C879;margin-bottom:16px;}
-.photo-band-quote{font-family:'Newsreader',serif;font-style:italic;color:#fff;font-size:clamp(1.45rem,3.6vw,2.3rem);line-height:1.28;text-wrap:balance;margin:0;}
+.photo-band-quote{
+  font-family:'Newsreader',serif;font-style:italic;color:#fff;
+  font-size:clamp(1.45rem,3.6vw,2.4rem);line-height:1.28;
+  text-wrap:balance;margin:0;
+  text-shadow:0 2px 12px rgba(0,0,0,.3);
+}
 
-/* SECTIONS */
-.section{padding:clamp(64px,8vw,104px) 0;}
+/* ── SECTIONS ───────────────────────────────────────────────── */
+.section{padding:clamp(72px,9vw,112px) 0;}
 .kicker{color:#B0801E;font-size:.8rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;margin-bottom:14px;}
-.h2{font-family:'Newsreader',serif;font-weight:500;color:#1C2E4A;font-size:clamp(1.9rem,4.4vw,3rem);line-height:1.08;text-wrap:balance;}
-.section-head{max-width:46ch;margin-bottom:clamp(36px,5vw,54px);}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,270px),1fr));gap:18px;}
-.card{background:#FCF8F0;border:1px solid rgba(28,46,74,.08);border-radius:18px;padding:30px 26px;}
-.card .num{display:grid;place-items:center;width:40px;height:40px;border-radius:11px;background:#EFE4D2;color:#B0801E;font-family:'Newsreader',serif;font-weight:600;margin-bottom:18px;}
-.card .num.sage{background:#E4E8DC;color:#5F6E48;}
-.card h3{font-family:'Newsreader',serif;font-weight:600;color:#1C2E4A;font-size:1.25rem;margin-bottom:8px;}
-.card p{color:#6F6557;font-size:.98rem;}
+.h2{font-family:'Newsreader',serif;font-weight:500;color:#1C2E4A;font-size:clamp(1.9rem,4.4vw,3.1rem);line-height:1.07;text-wrap:balance;}
+.section-head{max-width:46ch;margin-bottom:clamp(40px,5vw,60px);}
 
-/* BOOK */
-.book{background:#1C2E4A;color:#EDE6D6;}
-.book .inner{display:flex;flex-wrap:wrap;align-items:center;gap:clamp(36px,6vw,72px);padding:clamp(64px,8vw,112px) 0;}
+/* Pillar cards */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,270px),1fr));gap:18px;}
+.card{
+  background:var(--card-bg);
+  border:1px solid rgba(28,46,74,.07);
+  border-radius:var(--radius-md);
+  padding:32px 28px;
+  position:relative;overflow:hidden;
+  transition:transform .3s var(--spring),box-shadow .3s,border-color .3s;
+  cursor:default;
+}
+.card::before{
+  content:"";position:absolute;
+  bottom:0;left:0;right:0;height:3px;
+  background:linear-gradient(90deg,#C9A24B,rgba(201,162,75,0));
+  transform:scaleX(0);transform-origin:left;
+  transition:transform .35s var(--transition);
+}
+.card:hover{transform:translateY(-5px);box-shadow:var(--shadow-lg);border-color:rgba(201,162,75,.3);}
+.card:hover::before{transform:scaleX(1);}
+.card .num{
+  display:grid;place-items:center;width:42px;height:42px;
+  border-radius:12px;background:#EFE4D2;color:#B0801E;
+  font-family:'Newsreader',serif;font-weight:600;
+  margin-bottom:20px;font-size:1.05rem;
+  transition:background .25s,transform .25s var(--spring);
+}
+.card:hover .num{background:#E4D5BC;transform:scale(1.06);}
+.card .num.sage{background:#E4E8DC;color:#5F6E48;}
+.card:hover .num.sage{background:#d4daca;}
+.card h3{font-family:'Newsreader',serif;font-weight:600;color:#1C2E4A;font-size:1.27rem;margin-bottom:10px;}
+.card p{color:#6F6557;font-size:.98rem;line-height:1.68;}
+
+/* ── BOOK ───────────────────────────────────────────────────── */
+.book{
+  background:#1C2E4A;color:#EDE6D6;
+  position:relative;overflow:hidden;
+}
+/* Subtle cross-hatch texture on dark section */
+.book::before{
+  content:"";position:absolute;inset:0;
+  background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
+  background-size:40px 40px;
+  pointer-events:none;
+}
+.book .inner{
+  display:flex;flex-wrap:wrap;
+  align-items:center;gap:clamp(36px,6vw,80px);
+  padding:clamp(72px,9vw,120px) 0;
+  position:relative;
+}
 .book-art{flex:1 1 300px;min-width:260px;display:grid;place-items:center;}
-.book-art img{width:clamp(230px,30vw,340px);border-radius:8px;box-shadow:0 40px 80px -24px rgba(0,0,0,.6);}
+.book-art img{
+  width:clamp(230px,30vw,340px);
+  border-radius:10px;
+  box-shadow:0 48px 96px -24px rgba(0,0,0,.7),0 16px 40px -12px rgba(0,0,0,.4);
+  transition:transform .4s var(--spring),box-shadow .4s;
+}
+.book-art:hover img{transform:translateY(-8px) rotate(-1deg);box-shadow:0 64px 120px -24px rgba(0,0,0,.7),0 24px 56px -12px rgba(0,0,0,.4);}
 .book-copy{flex:1 1 420px;min-width:300px;}
 .book .eyebrow{color:#C9A24B;}
-.gift-badge{display:inline-block;background:#C9A24B;color:#1C2E4A;font-weight:700;font-size:.74rem;letter-spacing:.1em;text-transform:uppercase;padding:9px 17px;border-radius:999px;margin-bottom:20px;box-shadow:0 10px 24px -8px rgba(201,162,75,.6);}
-.book h2{font-family:'Newsreader',serif;font-weight:500;font-size:clamp(2rem,4.6vw,3.1rem);line-height:1.06;margin-bottom:10px;color:#fff;text-wrap:balance;}
-.book .tag{font-family:'Newsreader',serif;font-style:italic;color:#C9A24B;font-size:clamp(1.1rem,2.4vw,1.35rem);margin-bottom:24px;}
-.book .desc{color:#C8C0AE;font-size:1.06rem;margin-bottom:24px;max-width:54ch;text-wrap:pretty;}
-.pills{display:flex;flex-wrap:wrap;gap:10px 26px;margin-bottom:32px;}
+.gift-badge{
+  display:inline-block;background:#C9A24B;color:#1C2E4A;
+  font-weight:700;font-size:.74rem;letter-spacing:.1em;text-transform:uppercase;
+  padding:9px 17px;border-radius:var(--radius-full);
+  margin-bottom:22px;box-shadow:0 10px 28px -8px rgba(201,162,75,.7);
+  position:relative;overflow:hidden;
+}
+.gift-badge::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.25),transparent);
+  transform:translateX(-100%);
+  animation:shimmer 3s ease-in-out infinite;
+}
+.book h2{font-family:'Newsreader',serif;font-weight:500;font-size:clamp(2rem,4.6vw,3.2rem);line-height:1.06;margin-bottom:10px;color:#fff;text-wrap:balance;}
+.book .tag{font-family:'Newsreader',serif;font-style:italic;color:#C9A24B;font-size:clamp(1.1rem,2.4vw,1.35rem);margin-bottom:26px;}
+.book .desc{color:#C8C0AE;font-size:1.06rem;margin-bottom:28px;max-width:54ch;text-wrap:pretty;line-height:1.72;}
+.pills{display:flex;flex-wrap:wrap;gap:10px 28px;margin-bottom:34px;}
 .pills span{display:inline-flex;align-items:center;gap:9px;color:#EDE6D6;font-size:.97rem;}
-.pills .dia{width:6px;height:6px;background:#C9A24B;transform:rotate(45deg);}
-.btn-gold{background:#C9A24B;color:#1C2E4A;box-shadow:0 10px 26px -10px rgba(201,162,75,.7);font-weight:700;padding:15px 30px;}
-.btn-gold:hover{background:#d8b25c;}
+.pills .dia{width:6px;height:6px;background:#C9A24B;transform:rotate(45deg);flex:none;}
+.btn-gold{
+  background:#C9A24B;color:#1C2E4A;
+  box-shadow:0 12px 32px -10px rgba(201,162,75,.7);
+  font-weight:700;padding:16px 32px;font-size:1.02rem;
+}
+.btn-gold:hover{background:#d8b25c;transform:translateY(-2px);box-shadow:0 18px 40px -10px rgba(201,162,75,.75);}
 
-/* RESOURCES */
-.res-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:20px;margin-bottom:clamp(32px,5vw,48px);}
-.res-link{text-decoration:none;color:#1C2E4A;font-weight:600;border-bottom:2px solid #C9A24B;padding-bottom:3px;white-space:nowrap;}
+/* ── RESOURCES ──────────────────────────────────────────────── */
+.res-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:20px;margin-bottom:clamp(36px,5vw,52px);}
+.res-link{
+  text-decoration:none;color:#1C2E4A;font-weight:600;
+  border-bottom:2px solid #C9A24B;padding-bottom:3px;
+  white-space:nowrap;transition:color .2s,border-color .2s;
+}
+.res-link:hover{color:#B0801E;border-color:#B0801E;}
 .res-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr));gap:18px;}
-.res-card{text-decoration:none;background:#FCF8F0;border:1px solid rgba(28,46,74,.08);border-radius:18px;padding:28px 26px;display:block;}
-.res-card:hover{border-color:rgba(201,162,75,.6);}
-.res-card .free{display:inline-block;font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#1FA855;background:rgba(31,168,85,.1);padding:5px 11px;border-radius:999px;margin-bottom:18px;}
-.res-card h3{font-family:'Newsreader',serif;font-weight:600;color:#1C2E4A;font-size:1.2rem;margin-bottom:7px;}
-.res-card p{color:#6F6557;font-size:.95rem;}
+.res-card{
+  text-decoration:none;background:var(--card-bg);
+  border:1px solid rgba(28,46,74,.08);border-radius:var(--radius-md);
+  padding:30px 28px;display:block;
+  transition:transform .3s var(--spring),box-shadow .3s,border-color .3s;
+  position:relative;overflow:hidden;
+}
+.res-card::after{
+  content:"→";
+  position:absolute;bottom:24px;right:24px;
+  font-size:1.2rem;color:#C9A24B;
+  opacity:0;transform:translate(-6px,6px);
+  transition:opacity .25s,transform .25s var(--transition));
+}
+.res-card:hover{transform:translateY(-5px);box-shadow:var(--shadow-lg);border-color:rgba(201,162,75,.35);}
+.res-card:hover::after{opacity:1;transform:translate(0,0);}
+.res-card .free{
+  display:inline-block;font-size:.72rem;font-weight:700;
+  letter-spacing:.08em;text-transform:uppercase;
+  color:#1FA855;background:rgba(31,168,85,.1);
+  padding:5px 12px;border-radius:var(--radius-full);margin-bottom:18px;
+}
+.res-card h3{font-family:'Newsreader',serif;font-weight:600;color:#1C2E4A;font-size:1.22rem;margin-bottom:8px;}
+.res-card p{color:#6F6557;font-size:.96rem;line-height:1.65;}
 
-/* COMMUNITY */
-.community{background:#EFE4D2;}
-.community .inner{width:min(92%,1000px);margin:0 auto;padding:clamp(64px,8vw,104px) 0;}
-.community-card{background:#FCF8F0;border:1px solid rgba(28,46,74,.1);border-radius:26px;padding:clamp(36px,6vw,64px);text-align:center;box-shadow:0 24px 50px -28px rgba(28,46,74,.3);}
-.community-icon{display:inline-grid;place-items:center;width:56px;height:56px;border-radius:50%;background:rgba(31,168,85,.12);margin-bottom:24px;}
-.community-icon span{width:14px;height:14px;border-radius:50%;background:#1FA855;}
-.community-card h2{font-family:'Newsreader',serif;font-weight:500;color:#1C2E4A;font-size:clamp(1.9rem,4.4vw,2.9rem);line-height:1.1;margin-bottom:16px;text-wrap:balance;}
-.community-card p{color:#5C5446;font-size:clamp(1.02rem,2.2vw,1.15rem);max-width:52ch;margin:0 auto 30px;text-wrap:pretty;}
-.btn-wa.big{font-size:1.05rem;padding:16px 32px;box-shadow:0 10px 26px -10px rgba(31,168,85,.6);}
+/* ── COMMUNITY ──────────────────────────────────────────────── */
+.community{background:#EFE4D2;position:relative;overflow:hidden;}
+.community::before{
+  content:"";position:absolute;inset:0;
+  background-image:radial-gradient(circle at 15% 50%,rgba(201,162,75,.08) 0%,transparent 50%),radial-gradient(circle at 85% 20%,rgba(28,46,74,.05) 0%,transparent 50%);
+  pointer-events:none;
+}
+.community .inner{width:min(92%,1000px);margin:0 auto;padding:clamp(72px,9vw,112px) 0;position:relative;}
+.community-card{
+  background:var(--card-bg);
+  border:1px solid rgba(28,46,74,.1);
+  border-radius:var(--radius-lg);
+  padding:clamp(40px,7vw,72px);
+  text-align:center;
+  box-shadow:var(--shadow-xl);
+  position:relative;overflow:hidden;
+}
+.community-card::before{
+  content:"";position:absolute;
+  top:0;left:50%;transform:translateX(-50%);
+  width:200px;height:3px;
+  background:linear-gradient(90deg,transparent,#C9A24B,transparent);
+}
+.community-icon{
+  display:inline-grid;place-items:center;
+  width:60px;height:60px;border-radius:50%;
+  background:rgba(31,168,85,.1);margin-bottom:26px;
+  animation:pulse-ring 2.5s ease-out infinite;
+}
+.community-icon span{width:16px;height:16px;border-radius:50%;background:#1FA855;}
+.community-card h2{font-family:'Newsreader',serif;font-weight:500;color:#1C2E4A;font-size:clamp(1.9rem,4.4vw,2.9rem);line-height:1.1;margin-bottom:18px;text-wrap:balance;}
+.community-card p{color:#5C5446;font-size:clamp(1.02rem,2.2vw,1.16rem);max-width:52ch;margin:0 auto 32px;text-wrap:pretty;line-height:1.72;}
+.btn-wa.big{font-size:1.05rem;padding:17px 34px;box-shadow:0 12px 32px -10px rgba(31,168,85,.5);}
+.btn-wa.big:hover{box-shadow:0 18px 40px -10px rgba(31,168,85,.55);}
 
-/* NEWSLETTER */
-.news{width:min(92%,820px);margin:0 auto;padding:clamp(64px,8vw,104px) 0;text-align:center;}
-.news-card{background:#FCF8F0;border:1px solid rgba(28,46,74,.1);border-radius:26px;padding:clamp(36px,6vw,60px);box-shadow:0 24px 50px -28px rgba(28,46,74,.3);}
-.news-list{list-style:none;padding:0;margin:0 auto 30px;display:flex;flex-wrap:wrap;gap:10px 22px;justify-content:center;max-width:560px;}
+/* ── NEWSLETTER ─────────────────────────────────────────────── */
+.news{width:min(92%,840px);margin:0 auto;padding:clamp(72px,9vw,112px) 0;text-align:center;}
+.news-card{
+  background:var(--card-bg);
+  border:1px solid rgba(28,46,74,.1);
+  border-radius:var(--radius-lg);
+  padding:clamp(40px,7vw,68px);
+  box-shadow:var(--shadow-xl);
+  position:relative;overflow:hidden;
+}
+.news-card::before{
+  content:"";position:absolute;
+  bottom:0;left:50%;transform:translateX(-50%);
+  width:160px;height:160px;
+  background:radial-gradient(circle,rgba(201,162,75,.08),transparent);
+  pointer-events:none;
+}
+.news-list{list-style:none;padding:0;margin:0 auto 32px;display:flex;flex-wrap:wrap;gap:12px 26px;justify-content:center;max-width:560px;}
 .news-list li{display:inline-flex;align-items:center;gap:9px;color:#5C5446;font-size:.97rem;}
-.news-list .ck{width:18px;height:18px;border-radius:50%;background:rgba(31,168,85,.14);color:#1FA855;display:grid;place-items:center;font-size:.7rem;flex:none;}
-.news h2{font-family:'Newsreader',serif;font-weight:500;color:#1C2E4A;font-size:clamp(1.9rem,4.4vw,2.9rem);line-height:1.1;margin-bottom:16px;text-wrap:balance;}
-.news p{color:#5C5446;font-size:1.08rem;max-width:48ch;margin:0 auto 34px;text-wrap:pretty;}
+.news-list .ck{width:20px;height:20px;border-radius:50%;background:rgba(31,168,85,.14);color:#1FA855;display:grid;place-items:center;font-size:.72rem;flex:none;}
+.news h2{font-family:'Newsreader',serif;font-weight:500;color:#1C2E4A;font-size:clamp(1.9rem,4.4vw,2.9rem);line-height:1.1;margin-bottom:18px;text-wrap:balance;}
+.news p{color:#5C5446;font-size:1.08rem;max-width:48ch;margin:0 auto 36px;text-wrap:pretty;line-height:1.72;}
 .news form{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;max-width:520px;margin:0 auto;}
-.news input{flex:1 1 260px;min-width:0;background:#FCF8F0;border:1.5px solid rgba(28,46,74,.18);border-radius:999px;padding:15px 24px;font-size:1rem;font-family:inherit;color:#1C2E4A;outline:none;}
-.news input:focus{border-color:#C9A24B;}
-.news button{flex:none;background:#213A5C;color:#FBF7EF;border:none;cursor:pointer;padding:15px 30px;border-radius:999px;font-weight:600;font-size:1rem;font-family:inherit;}
-.news button:hover{background:#16243A;}
-.news .fine{margin-top:20px;font-size:.85rem;color:#9C9079;}
+.news input{
+  flex:1 1 260px;min-width:0;
+  background:#FBF7EF;
+  border:1.5px solid rgba(28,46,74,.16);border-radius:var(--radius-full);
+  padding:15px 24px;font-size:1rem;font-family:inherit;color:#1C2E4A;
+  outline:none;transition:border-color .2s,box-shadow .2s;
+}
+.news input:focus{border-color:#C9A24B;box-shadow:0 0 0 3px rgba(201,162,75,.15);}
+.news input::placeholder{color:#A89E8C;}
+.news button{
+  flex:none;background:#213A5C;color:#FBF7EF;
+  border:none;cursor:pointer;padding:15px 30px;
+  border-radius:var(--radius-full);font-weight:600;font-size:1rem;
+  font-family:inherit;
+  transition:background .2s,transform .18s var(--spring),box-shadow .2s;
+  box-shadow:0 6px 18px rgba(28,46,74,.2);
+}
+.news button:hover{background:#16243A;transform:translateY(-2px);box-shadow:0 10px 26px rgba(28,46,74,.28);}
+.news button:active{transform:scale(.97);}
+.news .fine{margin-top:22px;font-size:.85rem;color:#9C9079;}
 
-/* FOOTER */
-footer{background:#16243A;color:#C2CAD8;}
-footer .inner{padding:clamp(56px,7vw,84px) 0 0;}
-.foot-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:40px 28px;padding-bottom:54px;}
-.foot-about{grid-column:1/-1;max-width:34ch;}
-.foot-brand{display:flex;align-items:center;gap:11px;text-decoration:none;margin-bottom:18px;}
-.foot-brand .brand-mark{background:#C9A24B;color:#16243A;}
+/* ── FOOTER ─────────────────────────────────────────────────── */
+footer{background:#16243A;color:#C2CAD8;position:relative;overflow:hidden;}
+footer::before{
+  content:"";position:absolute;
+  top:-120px;left:-80px;
+  width:480px;height:480px;
+  border-radius:50%;
+  background:radial-gradient(circle,rgba(201,162,75,.05),transparent 70%);
+  pointer-events:none;
+}
+footer .inner{padding:clamp(60px,8vw,92px) 0 0;}
+.foot-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:44px 32px;padding-bottom:56px;position:relative;}
+.foot-about{grid-column:1/-1;max-width:36ch;}
+.foot-brand{display:flex;align-items:center;gap:11px;text-decoration:none;margin-bottom:18px;width:fit-content;}
+.foot-brand .brand-mark{background:#C9A24B;color:#16243A;transition:transform .25s var(--spring);}
+.foot-brand:hover .brand-mark{transform:scale(1.08);}
 .foot-brand span{font-family:'Newsreader',serif;font-size:1.4rem;font-weight:600;color:#fff;}
-.foot-about p{color:#94A0B4;font-size:.97rem;text-wrap:pretty;}
+.foot-about p{color:#94A0B4;font-size:.97rem;text-wrap:pretty;line-height:1.7;}
 .foot-col p.t{color:#fff;font-weight:600;font-size:.95rem;margin-bottom:16px;}
 .foot-col .links{display:flex;flex-direction:column;gap:11px;}
-.foot-col a{text-decoration:none;color:#94A0B4;font-size:.95rem;}
-.foot-col a:hover{color:#C9A24B;}
-.foot-bottom{border-top:1px solid rgba(255,255,255,.1);padding:26px 0 36px;display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;align-items:center;}
+.foot-col a{text-decoration:none;color:#94A0B4;font-size:.95rem;transition:color .2s,transform .2s;display:inline-block;}
+.foot-col a:hover{color:#C9A24B;transform:translateX(4px);}
+.foot-bottom{
+  border-top:1px solid rgba(255,255,255,.08);
+  padding:28px 0 40px;
+  display:flex;flex-wrap:wrap;gap:12px;
+  justify-content:space-between;align-items:center;
+}
 .foot-bottom p{font-size:.85rem;color:#6E7C92;}
-.foot-bottom .verse{font-style:italic;font-family:'Newsreader',serif;}
-.insta-bar{background:#16243A;border-top:1px solid rgba(255,255,255,.06);padding:14px min(4%,24px);display:flex;align-items:center;justify-content:center;gap:12px;}
-.insta-bar a{display:inline-flex;align-items:center;gap:9px;text-decoration:none;color:#94A0B4;font-size:.92rem;font-weight:500;}
-.insta-bar a:hover{color:#C9A24B;}
-.insta-icon{width:18px;height:18px;border-radius:5px;border:1.5px solid currentColor;display:grid;place-items:center;flex:none;}
-.insta-icon::after{content:'';width:6px;height:6px;border-radius:50%;border:1.5px solid currentColor;}
+.foot-bottom .verse{font-style:italic;font-family:'Newsreader',serif;color:#94A0B4;}
 
+/* ── DECORATIVE SECTION DIVIDER ─────────────────────────────── */
+.wave-divider{display:block;width:100%;overflow:hidden;line-height:0;}
+.wave-divider svg{display:block;width:100%;}
+
+/* ── RESPONSIVE ─────────────────────────────────────────────── */
 @media(max-width:900px){
   .nav-links{display:none;}
   .menu-btn{display:flex;}
+  .stat-divider{display:none;}
+  .stats-inner{gap:clamp(24px,5vw,40px);}
+}
+@media(max-width:600px){
+  .hero-art .frame::before{display:none;}
+  .foot-about{grid-column:auto;}
 }
 </style>
 </head>
 <body>
 <div id="top">
 
-<header>
+<!-- ── HEADER ──────────────────────────────────────────────── -->
+<header id="site-header">
   <nav class="wrap">
     <a href="#top" class="brand">
       <span class="brand-mark">U</span>
@@ -209,107 +605,123 @@ footer .inner{padding:clamp(56px,7vw,84px) 0 0;}
       <a href="#book">The Book</a>
       <a href="#resources">Resources</a>
       <a href="#community">Community</a>
-      <a href="https://instagram.com/upbringdaily" target="_blank" rel="noopener" title="@upbringdaily" style="display:inline-flex;align-items:center;gap:6px;text-decoration:none;color:#463F35;font-size:.88rem;font-weight:500;white-space:nowrap;" style-hover="color:#C9A24B;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>@upbringdaily</a>
       <a href="https://whatsapp.com/channel/0029Vb7gKDbG3R3qmlIybQ1K" target="_blank" rel="noopener" class="nav-cta">Join Community</a>
     </div>
-    <button class="menu-btn" aria-label="Menu" onclick="document.getElementById('mm').classList.toggle('open')"><span></span></button>
+    <button class="menu-btn" aria-label="Open menu" onclick="toggleMenu()"><span></span></button>
   </nav>
   <div class="mobile-menu" id="mm">
-    <a href="#about" onclick="document.getElementById('mm').classList.remove('open')">Our Story</a>
-    <a href="#book" onclick="document.getElementById('mm').classList.remove('open')">The Book</a>
-    <a href="#resources" onclick="document.getElementById('mm').classList.remove('open')">Resources</a>
-    <a href="#community" onclick="document.getElementById('mm').classList.remove('open')">Community</a>
+    <a href="#about" onclick="closeMenu()">Our Story</a>
+    <a href="#book" onclick="closeMenu()">The Book</a>
+    <a href="#resources" onclick="closeMenu()">Resources</a>
+    <a href="#community" onclick="closeMenu()">Community</a>
     <a href="https://whatsapp.com/channel/0029Vb7gKDbG3R3qmlIybQ1K" target="_blank" rel="noopener" class="nav-cta">Join the Community</a>
   </div>
 </header>
 
-<!-- HERO -->
+<!-- ── HERO ────────────────────────────────────────────────── -->
 <section class="hero wrap">
   <div class="hero-copy">
-    <div class="eyebrow">Deuteronomy 6:6-7</div>
-    <h1>Raising <i>rooted</i> families in Christ, one ordinary day at a time.</h1>
-    <p class="hero-sub">A home for everyday Christian parents. No theology degree required, just simple, faithful support, devotionals, and a warm community to help you build a strong foundation that your children will carry for life.</p>
-    <div class="btn-row">
+    <div class="eyebrow hero-load d1"><span class="rule"></span>Deuteronomy 6:6–7<span class="rule"></span></div>
+    <h1 class="hero-load d2">Raising <i>rooted</i> families in Christ, one ordinary day at a time.</h1>
+    <p class="hero-sub hero-load d3">A home for everyday Christian parents. No theology degree required&nbsp;&mdash; just simple, faithful support, devotionals, and a warm community to help you build a strong foundation that your children will carry for life.</p>
+    <div class="btn-row hero-load d4">
       <a href="https://whatsapp.com/channel/0029Vb7gKDbG3R3qmlIybQ1K" target="_blank" rel="noopener" class="btn btn-wa"><span class="dot"></span>Join the WhatsApp community</a>
       <a href="#resources" class="btn btn-ghost">Free resources</a>
     </div>
-    <p class="hero-note">Free devotionals &middot; A growing community of Christian families</p>
+    <p class="hero-note hero-load d4">Free devotionals &middot; A growing community of <strong>Christian families</strong></p>
   </div>
-  <div class="hero-art">
-    <div class="trust-card">
-      <div class="trust-grid">
-        <div class="trust-block trust-block-accent">
-          <span class="trust-num">40</span>
-          <span class="trust-label">days of devotional content for fathers</span>
-        </div>
-        <div class="trust-block">
-          <div class="trust-pillars">
-            <span>Faith</span>
-            <span>Family</span>
-            <span>Discipleship</span>
-            <span>Legacy</span>
-          </div>
-        </div>
-        <div class="trust-block">
-          <p class="trust-mission">For fathers who want to lead their homes with presence, grace, and biblical grounding, even when they feel unprepared.</p>
-        </div>
-        <div class="trust-block trust-block-quote">
-          <div class="trust-for-who">
-            <span class="label">Written for fathers who feel</span>
-            <span class="line">Imperfect</span>
-            <span class="line">Unprepared</span>
-            <span class="line called">Called anyway</span>
-          </div>
-        </div>
-      </div>
-      <div class="trust-footer">
-        <span class="gift-badge" style="font-size:.7rem;padding:7px 14px;">The Perfect Father&rsquo;s Day Gift &rarr; Available on Amazon</span>
-      </div>
+  <div class="hero-art hero-load d5">
+    <div class="frame">
+      <img src="book-cover.png.jpg" alt="What Your Children Will Remember, a 40-day devotional for fathers, Upbring Daily" loading="eager">
+      <div class="badge">40-Day Devotional for Fathers</div>
     </div>
   </div>
 </section>
 
-<!-- MISSION -->
+<!-- ── STATS BAR ────────────────────────────────────────────── -->
+<div class="stats-bar">
+  <div class="stats-inner wrap">
+    <div class="stat-item reveal">
+      <div class="stat-num">40</div>
+      <div class="stat-label">Days of Devotionals</div>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat-item reveal stagger-1">
+      <div class="stat-num">Free</div>
+      <div class="stat-label">Resources for Families</div>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat-item reveal stagger-2">
+      <div class="stat-num">Daily</div>
+      <div class="stat-label">Encouragement &amp; Prayer</div>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat-item reveal stagger-3">
+      <div class="stat-num">1</div>
+      <div class="stat-label">Ordinary Day at a Time</div>
+    </div>
+  </div>
+</div>
+
+<!-- ── MISSION ──────────────────────────────────────────────── -->
 <section class="mission" id="about">
   <div class="inner">
-    <div class="diamond-rule"><span class="rule"></span><span class="dia"></span><span class="rule"></span></div>
-    <blockquote>&ldquo;These commandments&hellip; are to be on your hearts. Impress them on your children. Talk about them when you sit at home and when you walk along the road.&rdquo;</blockquote>
-    <p>Faith isn&rsquo;t formed in a single grand moment, it&rsquo;s built in the small, daily rhythms of an ordinary home. You don&rsquo;t need a theology degree or years of Bible college, just a willing heart. Upbring Daily walks beside everyday parents with simple, faithful support to build a strong Christian foundation, so your children grow up rooted in Christ and never lose their way.</p>
+    <div class="diamond-rule reveal"><span class="rule"></span><span class="dia"></span><span class="rule"></span></div>
+    <blockquote class="reveal stagger-1">&ldquo;These commandments&hellip; are to be on your hearts. Impress them on your children. Talk about them when you sit at home and when you walk along the road.&rdquo;</blockquote>
+    <p class="reveal stagger-2">Faith isn&rsquo;t formed in a single grand moment&nbsp;&mdash; it&rsquo;s built in the small, daily rhythms of an ordinary home. You don&rsquo;t need a theology degree or years of Bible college, just a willing heart. Upbring Daily walks beside everyday parents with simple, faithful support to build a strong Christian foundation, so your children grow up rooted in Christ and never lose their way.</p>
   </div>
 </section>
 
-<!-- PHOTO BAND -->
+<!-- ── PHOTO BAND ────────────────────────────────────────────── -->
 <section class="photo-band">
-  <img src="family-home.jpg" alt="A family gathered around a table reading the Bible together at home, Faith, Family, Discipleship, Legacy">
-  <div class="photo-band-overlay">
+  <img src="family-home.jpg" alt="A Christian family sharing a meal and prayer together at home" loading="lazy" onerror="this.parentElement.classList.add('noimg');this.remove();">
+  <div class="photo-band-overlay reveal">
     <p class="kicker">The path home</p>
     <p class="photo-band-quote">Walk the road with them while they are young, and they will not lose their way.</p>
   </div>
 </section>
 
-<!-- PILLARS -->
+<!-- ── PILLARS ───────────────────────────────────────────────── -->
 <section class="section wrap">
-  <div class="section-head">
+  <div class="section-head reveal">
     <p class="kicker">Wherever you are</p>
     <h2 class="h2">For every season of family life.</h2>
   </div>
   <div class="grid">
-    <div class="card"><span class="num">01</span><h3>Preparing for Marriage</h3><p>Build a faith-centered foundation before the wedding day, and for the years after it.</p></div>
-    <div class="card"><span class="num sage">02</span><h3>Raising Children</h3><p>Daily discipleship for the long road of shaping character, habits, and a heart for God.</p></div>
-    <div class="card"><span class="num">03</span><h3>For Fathers</h3><p>Lead your home with presence and emotional honesty, the heart of our flagship devotional.</p></div>
-    <div class="card"><span class="num sage">04</span><h3>For Mothers</h3><p>Strength, rest, and spiritual nourishment for the daily, often unseen work of mothering.</p></div>
+    <div class="card reveal stagger-1">
+      <span class="num">01</span>
+      <h3>Preparing for Marriage</h3>
+      <p>Build a faith-centered foundation before the wedding day, and for the years after it.</p>
+    </div>
+    <div class="card reveal stagger-2">
+      <span class="num sage">02</span>
+      <h3>Raising Children</h3>
+      <p>Daily discipleship for the long road of shaping character, habits, and a heart for God.</p>
+    </div>
+    <div class="card reveal stagger-3">
+      <span class="num">03</span>
+      <h3>For Fathers</h3>
+      <p>Lead your home with presence and emotional honesty&nbsp;&mdash; the heart of our flagship devotional.</p>
+    </div>
+    <div class="card reveal stagger-4">
+      <span class="num sage">04</span>
+      <h3>For Mothers</h3>
+      <p>Strength, rest, and spiritual nourishment for the daily, often unseen work of mothering.</p>
+    </div>
   </div>
 </section>
 
-<!-- BOOK -->
+<!-- ── BOOK ─────────────────────────────────────────────────── -->
 <section class="book" id="book">
   <div class="inner wrap">
-    <div class="book-art"><img src="book-cover.png.jpg" alt="What Your Children Will Remember book cover"></div>
-    <div class="book-copy">
+    <div class="book-art reveal-left">
+      <img src="book-cover.png.jpg" alt="What Your Children Will Remember book cover" loading="lazy">
+    </div>
+    <div class="book-copy reveal-right">
       <div class="gift-badge">The Perfect Father&rsquo;s Day Gift</div>
       <h2>What Your Children Will Remember</h2>
       <p class="tag">A 40-day devotional journey for fathers</p>
-      <p class="desc">This Father&rsquo;s Day, give the man in your life more than another tie or mug, give him 40 days of presence, grace, and biblical wisdom. It&rsquo;s for men who want to lead their homes well, even when they feel imperfect and unprepared.</p>
+      <p class="desc">This Father&rsquo;s Day, give the man in your life more than another tie or mug&nbsp;&mdash; give him 40 days of presence, grace, and biblical wisdom. It&rsquo;s for men who want to lead their homes well, even when they feel imperfect and unprepared.</p>
       <div class="pills">
         <span><span class="dia"></span>Presence</span>
         <span><span class="dia"></span>Grace &amp; wisdom</span>
@@ -321,41 +733,57 @@ footer .inner{padding:clamp(56px,7vw,84px) 0 0;}
   </div>
 </section>
 
-<!-- RESOURCES -->
+<!-- ── RESOURCES ─────────────────────────────────────────────── -->
 <section class="section wrap" id="resources">
   <div class="res-head">
-    <div class="section-head" style="margin-bottom:0;max-width:42ch">
+    <div class="section-head reveal" style="margin-bottom:0;max-width:42ch">
       <p class="kicker">Free for your home</p>
       <h2 class="h2">Resources to disciple your family.</h2>
     </div>
-    <a href="#join" class="res-link">Get them free, join the list &rarr;</a>
+    <a href="#join" class="res-link reveal">Get them free, join the list &rarr;</a>
   </div>
   <div class="res-grid">
-    <a href="#join" class="res-card"><span class="free">Free &middot; PDF</span><h3>Prayer Guides</h3><p>Simple, printable prompts to pray over your spouse and children.</p></a>
-    <a href="#join" class="res-card"><span class="free">Free &middot; PDF</span><h3>Family Devotionals</h3><p>Short readings to gather around the table and grow in faith together.</p></a>
-    <a href="#join" class="res-card"><span class="free">Free &middot; PDF</span><h3>Discipleship PDFs</h3><p>Practical guides for building rhythms of faith into everyday family life.</p></a>
-    <a href="#join" class="res-card"><span class="free">Free &middot; PDF</span><h3>Scripture Printables</h3><p>Verse cards and wall prints to keep God&rsquo;s word in front of your family.</p></a>
+    <a href="#join" class="res-card reveal stagger-1">
+      <span class="free">Free &middot; PDF</span>
+      <h3>Prayer Guides</h3>
+      <p>Simple, printable prompts to pray over your spouse and children.</p>
+    </a>
+    <a href="#join" class="res-card reveal stagger-2">
+      <span class="free">Free &middot; PDF</span>
+      <h3>Family Devotionals</h3>
+      <p>Short readings to gather around the table and grow in faith together.</p>
+    </a>
+    <a href="#join" class="res-card reveal stagger-3">
+      <span class="free">Free &middot; PDF</span>
+      <h3>Discipleship PDFs</h3>
+      <p>Practical guides for building rhythms of faith into everyday family life.</p>
+    </a>
+    <a href="#join" class="res-card reveal stagger-4">
+      <span class="free">Free &middot; PDF</span>
+      <h3>Scripture Printables</h3>
+      <p>Verse cards and wall prints to keep God&rsquo;s word in front of your family.</p>
+    </a>
   </div>
 </section>
 
-<!-- COMMUNITY -->
+<!-- ── COMMUNITY ─────────────────────────────────────────────── -->
 <section class="community" id="community">
   <div class="inner">
-    <div class="community-card">
+    <div class="community-card reveal-scale">
       <span class="community-icon"><span></span></span>
       <h2>Where we share the free resources.</h2>
-      <p>Our WhatsApp channel is the heartbeat of Upbring Daily, it&rsquo;s where we share every free resource, daily encouragement, prayer, and updates first. A quiet, hopeful corner of the internet for families raising children in faith.</p>
+      <p>Our WhatsApp channel is the heartbeat of Upbring Daily&nbsp;&mdash; it&rsquo;s where we share every free resource, daily encouragement, prayer, and updates first. A quiet, hopeful corner of the internet for families raising children in faith.</p>
       <a href="https://whatsapp.com/channel/0029Vb7gKDbG3R3qmlIybQ1K" target="_blank" rel="noopener" class="btn btn-wa big"><span class="dot"></span>Join the WhatsApp community</a>
     </div>
   </div>
 </section>
 
-<!-- NEWSLETTER -->
+<!-- ── NEWSLETTER ─────────────────────────────────────────────── -->
 <section class="news" id="join">
-  <div class="news-card">
+  <div class="news-card reveal-scale">
     <p class="kicker">Free Resources</p>
     <h2>Get the free resource pack, straight to your inbox.</h2>
-    <p>Join the mailing list and we&rsquo;ll send you our prayer guides, family devotionals, and Scripture printables, completely free, plus first access to every new resource we create.</p>
+    <p>Join the mailing list and we&rsquo;ll send you our prayer guides, family devotionals, and Scripture printables&nbsp;&mdash; completely free, plus first access to every new resource we create.</p>
     <ul class="news-list">
       <li><span class="ck">&#10003;</span>Prayer guides</li>
       <li><span class="ck">&#10003;</span>Family devotionals</li>
@@ -363,20 +791,23 @@ footer .inner{padding:clamp(56px,7vw,84px) 0 0;}
       <li><span class="ck">&#10003;</span>New resources first</li>
     </ul>
     <form action="https://upbringdaily.beehiiv.com/subscribe" method="get" target="_blank">
-      <input type="email" name="email" required placeholder="you@email.com">
+      <input type="email" name="email" required placeholder="you@email.com" autocomplete="email">
       <button type="submit">Send me the free resources</button>
     </form>
     <p class="fine">Free forever &middot; Powered by Beehiiv &middot; Unsubscribe anytime.</p>
   </div>
 </section>
 
-<!-- FOOTER -->
+<!-- ── FOOTER ─────────────────────────────────────────────────── -->
 <footer>
   <div class="inner wrap">
     <div class="foot-grid">
       <div class="foot-about">
-        <a href="#top" class="foot-brand"><span class="brand-mark">U</span><span>Upbring Daily</span></a>
-        <p>Christian parenting, family discipleship, and faith-based resources, for the family you&rsquo;re raising, one ordinary day at a time.</p>
+        <a href="#top" class="foot-brand">
+          <span class="brand-mark">U</span>
+          <span>Upbring Daily</span>
+        </a>
+        <p>Christian parenting, family discipleship, and faith-based resources&nbsp;&mdash; for the family you&rsquo;re raising, one ordinary day at a time.</p>
       </div>
       <div class="foot-col">
         <p class="t">Explore</p>
@@ -391,18 +822,11 @@ footer .inner{padding:clamp(56px,7vw,84px) 0 0;}
         <p class="t">Connect</p>
         <div class="links">
           <a href="https://whatsapp.com/channel/0029Vb7gKDbG3R3qmlIybQ1K" target="_blank" rel="noopener">WhatsApp Channel</a>
-          <a href="https://instagram.com/upbringdaily" target="_blank" rel="noopener">Instagram @upbringdaily</a>
           <a href="mailto:hello@upbringdaily.com">hello@upbringdaily.com</a>
           <a href="https://upbringdaily.beehiiv.com/subscribe" target="_blank" rel="noopener">Email Updates</a>
           <a href="https://amzn.eu/d/04zI7nNh" target="_blank" rel="noopener">Get the Book</a>
         </div>
       </div>
-    </div>
-    <div class="insta-bar">
-      <a href="https://instagram.com/upbringdaily" target="_blank" rel="noopener">
-        <span class="insta-icon"></span>
-        Follow us on Instagram &middot; @upbringdaily
-      </a>
     </div>
     <div class="foot-bottom">
       <p>&copy; 2026 Upbring Daily. All rights reserved.</p>
@@ -412,5 +836,78 @@ footer .inner{padding:clamp(56px,7vw,84px) 0 0;}
 </footer>
 
 </div>
+
+<script>
+/* ── SCROLL-AWARE NAV ──────────────────────────────────────── */
+const header = document.getElementById('site-header');
+let lastY = 0;
+window.addEventListener('scroll', () => {
+  const y = window.scrollY;
+  header.classList.toggle('scrolled', y > 40);
+  lastY = y;
+}, { passive: true });
+
+/* ── MOBILE MENU ───────────────────────────────────────────── */
+function toggleMenu() {
+  const mm = document.getElementById('mm');
+  const open = mm.classList.toggle('open');
+  document.querySelector('.menu-btn').setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+}
+function closeMenu() {
+  document.getElementById('mm').classList.remove('open');
+  document.querySelector('.menu-btn').setAttribute('aria-label', 'Open menu');
+}
+
+/* ── SCROLL REVEAL ─────────────────────────────────────────── */
+const observerOpts = { threshold: 0.12, rootMargin: '0px 0px -48px 0px' };
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      observer.unobserve(e.target);
+    }
+  });
+}, observerOpts);
+
+document.querySelectorAll('.reveal, .reveal-scale, .reveal-left, .reveal-right').forEach(el => {
+  observer.observe(el);
+});
+
+/* ── HERO PARALLAX (subtle) ────────────────────────────────── */
+const heroArt = document.querySelector('.hero-art');
+if (heroArt && window.matchMedia('(prefers-reduced-motion: no-preference)').matches) {
+  window.addEventListener('scroll', () => {
+    const y = window.scrollY;
+    if (y < window.innerHeight) {
+      heroArt.style.transform = `translateY(${y * 0.06}px)`;
+    }
+  }, { passive: true });
+}
+
+/* ── BUTTON RIPPLE ─────────────────────────────────────────── */
+document.querySelectorAll('.btn').forEach(btn => {
+  btn.addEventListener('click', function(e) {
+    const rect = this.getBoundingClientRect();
+    const ripple = document.createElement('span');
+    const size = Math.max(rect.width, rect.height);
+    ripple.style.cssText = `
+      position:absolute;border-radius:50%;
+      width:${size}px;height:${size}px;
+      left:${e.clientX - rect.left - size/2}px;
+      top:${e.clientY - rect.top - size/2}px;
+      background:rgba(255,255,255,.22);
+      transform:scale(0);animation:ripple .55s ease-out forwards;
+      pointer-events:none;
+    `;
+    this.appendChild(ripple);
+    setTimeout(() => ripple.remove(), 600);
+  });
+});
+
+/* Ripple keyframe (injected once) */
+const rippleStyle = document.createElement('style');
+rippleStyle.textContent = '@keyframes ripple{to{transform:scale(2.8);opacity:0;}}';
+document.head.appendChild(rippleStyle);
+</script>
 </body>
 </html>
