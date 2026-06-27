@@ -1,5 +1,17 @@
 [
   {
+  "id": 7,
+  "title": "Your post title here",
+  "summary": "A short description of the post.",
+  "category": "fp",
+  "category_label": "Faith Parenting",
+  "date": "June 27, 2026",
+  "author": "Jaish K Jacob",
+  "read_time": "4 min read",
+  "featured": false,
+  "link": "#"
+},
+  {
     "id": 1,
     "title": "The one habit that keeps a family rooted in faith.",
     "summary": "It's not a Sunday routine. It's not a 30-minute devotional. It's something you can do on any ordinary Tuesday, and it changes everything.",
