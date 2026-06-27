@@ -73,6 +73,9 @@ nav{display:flex;align-items:center;justify-content:space-between;height:64px;ga
 .hero{padding:clamp(64px,11svh,110px) 0 clamp(52px,9svh,88px);}
 ..hero-inner{width:min(680px,100%);margin:0 auto;text-align:center;}
 .eyebrow{display:inline-block;background:var(--sage-l);color:var(--sage);font-size:.72rem;font-weight:700;letter-spacing:.13em;text-transform:uppercase;padding:5px 13px;border-radius:999px;margin-bottom:20px;}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(2.6rem,7vw,4.2rem);font-weight:700;line-height:1.05;letter-spacing:-.02em;color:var(--green);text-wrap:balance;margin-bottom:18px;}
+.hero h1 .plain{color:var(--text);font-weight:500;font-size:.78em;display:block;font-style:normal;letter-spacing:-.01em;}
+.hero h1 em{font-style:italic;color:var(--terra);background:linear-gradient(135deg,var(--terra),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
 .hero-sub{font-size:clamp(.97rem,2vw,1.1rem);color:var(--muted);max-width:42ch;margin:0 auto 30px;font-weight:400;text-wrap:pretty;}
 .btns{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;}
 .wa-btn{display:inline-flex;align-items:center;gap:8px;background:#22C55E;color:#fff;padding:13px 22px;border-radius:999px;font-weight:700;font-size:.92rem;box-shadow:0 4px 18px rgba(34,197,94,.28);}
@@ -91,7 +94,7 @@ nav{display:flex;align-items:center;justify-content:space-between;height:64px;ga
 .vcard::after{content:'';position:absolute;top:-44px;right:-32px;width:160px;height:160px;border-radius:50%;background:rgba(184,137,42,.12);}
 .vcard::before{content:'';position:absolute;bottom:-36px;left:-20px;width:120px;height:120px;border-radius:50%;background:rgba(122,146,112,.15);}
 .v-lbl{font-size:.65rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:rgba(251,247,240,.4);margin-bottom:14px;position:relative;z-index:1;}
-.v-q{font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(1.1rem,2.6vw,1.35rem);color:#FBF7F0;line-height:1.42;min-height:90px;position:relative;z-index:1;transition:opacity .45s;}
+.v-q{font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(1.1rem,2.6vw,1.35rem);color:#FBF7F0;line-height:1.42;min-height:90px;position:relative;z-index:1;transition:opacity .45s;display:flex;align-items:center;}
 .v-foot{margin-top:20px;display:flex;align-items:center;justify-content:space-between;position:relative;z-index:1;}
 .v-ref{font-size:.78rem;font-weight:700;color:var(--gold);}
 .v-dots{display:flex;gap:5px;}
@@ -133,8 +136,8 @@ nav{display:flex;align-items:center;justify-content:space-between;height:64px;ga
 .bc p{font-size:.85rem;color:var(--muted);line-height:1.6;}
 
 /* ── BOOK ── */
-.book{background:var(--green);padding:clamp(52px,8vw,88px) 0;}
-.book-row{display:flex;flex-wrap:wrap;align-items:center;gap:clamp(28px,5vw,52px);}
+/* book base overridden */
+/* book-row overridden */
 .book-img{flex:1 1 240px;min-width:200px;display:grid;place-items:center;}
 .book-img img{width:clamp(200px,24vw,290px);border-radius:12px;box-shadow:0 40px 80px -20px rgba(0,0,0,.6);}
 .book-txt{flex:1 1 340px;min-width:260px;}
@@ -257,6 +260,77 @@ footer{background:var(--text);color:rgba(251,247,240,.55);}
 .gate-btns{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;position:relative;z-index:1;}
 .gate-count{display:inline-flex;align-items:center;gap:6px;background:rgba(251,247,240,.1);color:rgba(251,247,240,.7);font-size:.78rem;font-weight:600;padding:5px 12px;border-radius:999px;margin-bottom:18px;position:relative;z-index:1;}
 .gate-count .dot{width:6px;height:6px;border-radius:50%;background:var(--gold);}
+
+/* ── SOCIAL BAR ── */
+.social-bar{background:var(--warm);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:20px 0;}
+.social-bar-in{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:10px;}
+@media(max-width:600px){.social-bar-in p{display:none;}.s-btn{font-size:.8rem;padding:9px 14px;gap:6px;}}
+.social-bar p{font-size:.82rem;font-weight:600;color:var(--muted);margin-right:4px;}
+.s-btn{display:inline-flex;align-items:center;gap:8px;padding:10px 18px;border-radius:999px;font-weight:700;font-size:.84rem;transition:transform .15s,opacity .2s;border:none;cursor:pointer;text-decoration:none;}
+.s-btn:hover{transform:translateY(-2px);opacity:.9;}
+.s-btn:active{transform:scale(.97);}
+.s-wa{background:#22C55E;color:#fff;box-shadow:0 4px 14px rgba(34,197,94,.3);}
+.s-ig{background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);color:#fff;box-shadow:0 4px 14px rgba(220,39,67,.28);}
+.s-em{background:var(--green);color:#FBF7F0;box-shadow:0 4px 14px rgba(45,58,40,.25);}
+.s-icon{width:16px;height:16px;flex:none;}
+
+/* ── BOOK REDESIGN ── */
+.book{background:var(--green);padding:clamp(60px,9vw,100px) 0;position:relative;overflow:hidden;}
+.book-orb{position:absolute;border-radius:50%;pointer-events:none;}
+.book-orb1{width:400px;height:400px;top:-100px;right:-80px;background:radial-gradient(circle,rgba(184,137,42,.18),transparent 70%);}
+.book-orb2{width:300px;height:300px;bottom:-60px;left:-60px;background:radial-gradient(circle,rgba(122,146,112,.15),transparent 70%);}
+.book-row{display:flex;flex-wrap:wrap;align-items:center;gap:clamp(32px,6vw,64px);position:relative;z-index:1;}
+.book-img{flex:1 1 240px;min-width:200px;display:flex;flex-direction:column;align-items:center;gap:0;}
+.book-cover-wrap{position:relative;display:inline-block;}
+.book-cover-wrap img{width:clamp(200px,26vw,300px);border-radius:14px;box-shadow:0 40px 80px -20px rgba(0,0,0,.7),0 0 0 1px rgba(255,255,255,.07);}
+.book-cover-shine{position:absolute;inset:0;border-radius:14px;background:linear-gradient(135deg,rgba(255,255,255,.12) 0%,transparent 50%);pointer-events:none;}
+.book-days-badge{margin-top:20px;background:var(--gold);border-radius:16px;padding:12px 22px;display:flex;align-items:baseline;gap:6px;}
+.book-days-num{font-family:'Playfair Display',serif;font-size:2.2rem;font-weight:700;color:var(--green);line-height:1;}
+.book-days-lbl{font-size:.82rem;font-weight:700;color:var(--green);text-transform:uppercase;letter-spacing:.1em;}
+.book-txt{flex:1 1 340px;min-width:260px;}
+.book-eyebrow{display:inline-flex;align-items:center;gap:9px;font-size:.7rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(251,247,240,.45);margin-bottom:16px;}
+.book-eyebrow-dot{width:6px;height:6px;border-radius:50%;background:var(--gold);flex:none;}
+.book-txt h2{font-family:'Playfair Display',serif;font-size:clamp(2rem,5vw,3.2rem);font-weight:700;color:#FBF7F0;line-height:1.04;margin-bottom:6px;letter-spacing:-.02em;}
+.book-sub{font-family:'Playfair Display',serif;font-style:italic;color:var(--gold);font-size:1.05rem;margin-bottom:24px;}
+.book-pillars{display:grid;grid-template-columns:1fr 1fr;gap:8px 16px;margin-bottom:22px;}
+.book-pillar{display:inline-flex;align-items:center;gap:8px;color:rgba(251,247,240,.72);font-size:.86rem;font-weight:500;}
+.bp-icon{color:var(--gold);font-size:.55rem;flex:none;}
+.book-quote{font-family:'Playfair Display',serif;font-style:italic;color:rgba(251,247,240,.55);font-size:1rem;border-left:2px solid var(--gold);padding-left:16px;margin:0 0 22px;line-height:1.6;}
+.for-who-row{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:28px;}
+.fw-chip{background:rgba(251,247,240,.08);border:1px solid rgba(251,247,240,.15);color:rgba(251,247,240,.7);padding:7px 14px;border-radius:999px;font-size:.82rem;font-weight:600;}
+.fw-chip-em{background:var(--gold);color:var(--green);border-color:var(--gold);font-weight:700;}
+.book-cta-row{display:flex;align-items:center;gap:16px;flex-wrap:wrap;}
+.book-cta-main{padding:14px 28px;font-size:.95rem;}
+.book-cta-note{font-size:.78rem;color:rgba(251,247,240,.4);font-style:italic;}
+@media(max-width:600px){.book-pillars{grid-template-columns:1fr;gap:6px;}}
+
+/* ── REVIEWS ── */
+.reviews{padding:clamp(52px,8vw,88px) 0;background:var(--cream);}
+.reviews-head{text-align:center;margin-bottom:clamp(28px,4vw,44px);}
+.reviews-head .kicker{display:block;margin-bottom:8px;}
+.reviews-head h2{font-family:'Playfair Display',serif;font-size:clamp(1.9rem,4.8vw,2.8rem);font-weight:700;color:var(--green);text-wrap:balance;}
+.reviews-head p{color:var(--muted);font-size:.93rem;margin-top:10px;}
+.reviews-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:16px;}
+.rv{background:#fff;border:1.5px solid var(--border);border-radius:22px;padding:28px 24px;display:flex;flex-direction:column;gap:16px;transition:border-color .22s,transform .18s;position:relative;overflow:hidden;}
+.rv::before{content:'"';position:absolute;top:10px;right:20px;font-family:'Playfair Display',serif;font-size:5rem;color:var(--sage-l);line-height:1;pointer-events:none;}
+.rv:hover{border-color:var(--sage);transform:translateY(-3px);}
+.rv-featured{border-color:var(--gold);background:linear-gradient(135deg,#fffdf7,#fff);}
+.rv-featured::before{color:rgba(184,137,42,.1);}
+.rv-stars{display:flex;gap:3px;}
+.rv-star{color:var(--gold);font-size:1rem;}
+.rv-star.empty{color:var(--border);}
+.rv-text{font-family:'Playfair Display',serif;font-style:italic;font-size:1.02rem;color:var(--text);line-height:1.6;flex:1;}
+.rv-author{display:flex;align-items:center;gap:12px;margin-top:auto;}
+.rv-avatar{width:42px;height:42px;border-radius:50%;background:var(--sage-l);display:grid;place-items:center;font-family:'Playfair Display',serif;font-weight:700;font-size:1.1rem;color:var(--sage);flex:none;}
+.rv-avatar.cl{background:var(--terra-l);color:var(--terra);}
+.rv-avatar.gd{background:linear-gradient(135deg,rgba(184,137,42,.2),rgba(184,137,42,.1));color:var(--gold);}
+.rv-name{font-weight:700;font-size:.9rem;color:var(--text);}
+.rv-role{font-size:.78rem;color:var(--muted);}
+.rv-source{display:inline-flex;align-items:center;gap:5px;font-size:.7rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);background:var(--warm);padding:3px 9px;border-radius:999px;margin-top:6px;}
+.rv-cta{background:var(--sage-l);border-radius:22px;padding:clamp(24px,4vw,36px);text-align:center;margin-top:6px;}
+.rv-cta p{font-size:.9rem;color:var(--sage);font-weight:600;margin-bottom:14px;}
+.rv-cta a{display:inline-flex;align-items:center;gap:8px;background:var(--green);color:#FBF7F0;padding:11px 22px;border-radius:999px;font-weight:700;font-size:.88rem;transition:opacity .2s;}
+.rv-cta a:hover{opacity:.88;}
 </style>
 </head>
 <body id="top">
@@ -269,10 +343,9 @@ footer{background:var(--text);color:rgba(251,247,240,.55);}
       <span class="logo-text">Upbring <span>Daily</span></span>
     </a>
     <div class="dlinks">
-      <a href="#about">Our Story</a>
-      <a href="#book">The Book</a>
-      <a href="#resources">Resources</a>
-      <a href="#community">Community</a>
+            <a href="#book">The Book</a>
+      <a href="resources.html">Resources</a>
+      <a href="blog.html">Blog</a>
       <a href="https://instagram.com/upbringdaily" target="_blank" rel="noopener" class="ig-a">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
         @upbringdaily
@@ -284,20 +357,20 @@ footer{background:var(--text);color:rgba(251,247,240,.55);}
     </button>
   </nav>
   <div class="mnav" id="mn">
-    <a href="#about" onclick="document.getElementById('mn').classList.remove('on')">Our Story</a>
-    <a href="#book" onclick="document.getElementById('mn').classList.remove('on')">The Book</a>
-    <a href="#resources" onclick="document.getElementById('mn').classList.remove('on')">Resources</a>
-    <a href="#community" onclick="document.getElementById('mn').classList.remove('on')">Community</a>
+        <a href="#book" onclick="document.getElementById('mn').classList.remove('on')">The Book</a>
+    <a href="resources.html">Resources</a>
+    <a href="blog.html">Blog</a>
     <a href="https://instagram.com/upbringdaily" target="_blank" rel="noopener">Instagram @upbringdaily</a>
     <a href="https://whatsapp.com/channel/0029Vb7gKDbG3R3qmlIybQ1K" target="_blank" rel="noopener" class="cta-btn">Join the Community</a>
   </div>
 </header>
 
+
 <!-- HERO -->
 <section class="hero w">
   <div class="hero-inner sr" style="width:min(680px,100%);margin:0 auto;text-align:center;">
     <div class="eyebrow">Raising Rooted Families</div>
-    <h1>Where everyday parents build <em>lasting faith</em> at home.</h1>
+    <h1><span class="plain">Where everyday parents</span> build <em>lasting faith</em> at home.</h1>
     <p class="hero-sub">No theology degree. No perfect family. Just simple, faithful support so your children grow up rooted in Christ and never lose their way.</p>
     <div class="btns">
       <a href="https://whatsapp.com/channel/0029Vb7gKDbG3R3qmlIybQ1K" target="_blank" rel="noopener" class="wa-btn"><span class="d"></span>Join the Community</a>
@@ -310,7 +383,7 @@ footer{background:var(--text);color:rgba(251,247,240,.55);}
     </div>
     <div class="vcard-wrap sr d2">
       <div class="vcard">
-        <p class="v-lbl">Daily Scripture</p>
+        <p class="v-lbl" id="vdate">Today&rsquo;s Verse</p>
         <p class="v-q" id="vq"></p>
         <div class="v-foot">
           <span class="v-ref" id="vr"></span>
@@ -329,15 +402,6 @@ footer{background:var(--text);color:rgba(251,247,240,.55);}
     <cite>Faith isn&rsquo;t formed in a single grand moment. It&rsquo;s built in the small, daily rhythms of an ordinary home. You don&rsquo;t need a theology degree, just a willing heart.</cite>
   </div>
 </section>
-
-<!-- PHOTO BAND -->
-<div class="pband">
-  <img src="family-home.jpg" alt="A family gathered around a table reading the Bible together">
-  <div class="pcap">
-    <small>The path home</small>
-    <p>Walk the road with them while they are young, and they will not lose their way.</p>
-  </div>
-</div>
 
 <!-- PILLARS BENTO -->
 <section class="pillars w" id="pillars">
@@ -371,29 +435,41 @@ footer{background:var(--text);color:rgba(251,247,240,.55);}
 
 <!-- BOOK -->
 <section class="book" id="book">
+  <!-- ambient glow orbs -->
+  <div class="book-orb book-orb1"></div>
+  <div class="book-orb book-orb2"></div>
   <div class="w book-row">
     <div class="book-img sr">
-      <img src="book-cover.png.jpg" alt="What Your Children Will Remember book cover">
+      <div class="book-cover-wrap">
+        <img src="book-cover.png.jpg" alt="What Your Children Will Remember book cover">
+        <div class="book-cover-shine"></div>
+      </div>
+      <div class="book-days-badge">
+        <span class="book-days-num">40</span>
+        <span class="book-days-lbl">Days</span>
+      </div>
     </div>
     <div class="book-txt sr d1">
-      <p class="bk">The Book</p>
-      <h2>What Your Children Will Remember</h2>
-      <p class="book-sub">A 40-day devotional journey for fathers</p>
-      <p class="book-desc">For men who want to lead their homes with presence, grace, wisdom, emotional honesty, and biblical grounding, even when they feel imperfect and unprepared.</p>
-      <div class="book-tags">
-        <span class="book-tag">Presence</span>
-        <span class="book-tag">Grace &amp; wisdom</span>
-        <span class="book-tag">Emotional honesty</span>
-        <span class="book-tag">Biblical grounding</span>
+      <div class="book-eyebrow">
+        <span class="book-eyebrow-dot"></span>The Book
       </div>
-      <a href="https://amzn.eu/d/04zI7nNh" target="_blank" rel="noopener" class="gold-btn">Get the book on Amazon</a>
-      <div class="for-who">
-        <p class="fw-lbl">Written for fathers who feel</p>
-        <div class="fw-list">
-          <span>Imperfect</span>
-          <span>Unprepared</span>
-          <span class="em">Called anyway</span>
-        </div>
+      <h2>What Your Children<br>Will Remember</h2>
+      <p class="book-sub">A devotional journey for fathers</p>
+      <div class="book-pillars">
+        <div class="book-pillar"><span class="bp-icon">&#9670;</span><span>Presence</span></div>
+        <div class="book-pillar"><span class="bp-icon">&#9670;</span><span>Grace &amp; Wisdom</span></div>
+        <div class="book-pillar"><span class="bp-icon">&#9670;</span><span>Emotional Honesty</span></div>
+        <div class="book-pillar"><span class="bp-icon">&#9670;</span><span>Biblical Grounding</span></div>
+      </div>
+      <blockquote class="book-quote">&ldquo;For the father who shows up, even on the hard days.&rdquo;</blockquote>
+      <div class="for-who-row">
+        <div class="fw-chip">Imperfect</div>
+        <div class="fw-chip">Unprepared</div>
+        <div class="fw-chip fw-chip-em">Called anyway &#8594;</div>
+      </div>
+      <div class="book-cta-row">
+        <a href="https://amzn.eu/d/04zI7nNh" target="_blank" rel="noopener" class="gold-btn book-cta-main">Get the book on Amazon</a>
+        <div class="book-cta-note">Available in print &amp; digital</div>
       </div>
     </div>
   </div>
@@ -497,6 +573,79 @@ footer{background:var(--text);color:rgba(251,247,240,.55);}
   </div>
 </section>
 
+<!-- REVIEWS -->
+<section class="reviews" id="reviews">
+  <div class="w">
+    <div class="reviews-head sr">
+      <span class="kicker">What readers say</span>
+      <h2>Real stories from real families.</h2>
+      <p>From fathers, mothers, and couples who found encouragement on this journey.</p>
+    </div>
+    <div class="reviews-grid">
+      <div class="rv rv-featured sr">
+        <div class="rv-stars"><span class="rv-star">&#9733;</span><span class="rv-star">&#9733;</span><span class="rv-star">&#9733;</span><span class="rv-star">&#9733;</span><span class="rv-star">&#9733;</span></div>
+        <p class="rv-text">&ldquo;This book met me exactly where I was — a father trying his best and wondering if it was enough. Day 12 broke me open in the best way. I wept and prayed with my son that night.&rdquo;</p>
+        <div class="rv-author">
+          <div class="rv-avatar gd">J</div>
+          <div>
+            <p class="rv-name">James K.</p>
+            <p class="rv-role">Father of three, UK</p>
+            <span class="rv-source">Amazon review</span>
+          </div>
+        </div>
+      </div>
+      <div class="rv sr d1">
+        <div class="rv-stars"><span class="rv-star">&#9733;</span><span class="rv-star">&#9733;</span><span class="rv-star">&#9733;</span><span class="rv-star">&#9733;</span><span class="rv-star">&#9733;</span></div>
+        <p class="rv-text">&ldquo;I bought this for my husband and he read it every morning before the kids woke up. He said it helped him understand what kind of father he wanted to be. Highly recommend.&rdquo;</p>
+        <div class="rv-author">
+          <div class="rv-avatar cl">P</div>
+          <div>
+            <p class="rv-name">Priya M.</p>
+            <p class="rv-role">Mother of two, Canada</p>
+            <span class="rv-source">Amazon review</span>
+          </div>
+        </div>
+      </div>
+      <div class="rv sr d2">
+        <div class="rv-stars"><span class="rv-star">&#9733;</span><span class="rv-star">&#9733;</span><span class="rv-star">&#9733;</span><span class="rv-star">&#9733;</span><span class="rv-star">&#9733;</span></div>
+        <p class="rv-text">&ldquo;The WhatsApp channel has been a daily anchor for me. Short, honest, biblical. It doesn&rsquo;t feel like a ministry pushing content — it feels like a friend walking beside you.&rdquo;</p>
+        <div class="rv-author">
+          <div class="rv-avatar">S</div>
+          <div>
+            <p class="rv-name">Samuel O.</p>
+            <p class="rv-role">New father, Nigeria</p>
+            <span class="rv-source">WhatsApp community</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="rv-cta sr">
+      <p>Have the book or community helped you? We&rsquo;d love to hear your story.</p>
+      <a href="mailto:hello@upbringdaily.com">Share your story &rarr;</a>
+    </div>
+  </div>
+</section>
+
+<!-- SOCIAL BAR -->
+<div class="social-bar">
+  <div class="w social-bar-in">
+    <p>Connect with us:</p>
+    <a href="https://whatsapp.com/channel/0029Vb7gKDbG3R3qmlIybQ1K" target="_blank" rel="noopener" class="s-btn s-wa">
+      <svg class="s-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.122 1.532 5.857L.057 23.882a.5.5 0 00.611.611l6.025-1.475A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.882a9.87 9.87 0 01-5.031-1.378l-.36-.214-3.733.914.93-3.732-.234-.372A9.867 9.867 0 012.118 12C2.118 6.533 6.533 2.118 12 2.118c5.466 0 9.882 4.415 9.882 9.882 0 5.466-4.416 9.882-9.882 9.882z"/></svg>
+      WhatsApp
+    </a>
+    <a href="https://instagram.com/upbringdaily" target="_blank" rel="noopener" class="s-btn s-ig">
+      <svg class="s-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+      @upbringdaily
+    </a>
+    <a href="mailto:hello@upbringdaily.com" class="s-btn s-em">
+      <svg class="s-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg>
+      hello@upbringdaily.com
+    </a>
+  </div>
+</div>
+
+
 <!-- FOOTER -->
 <footer>
   <div class="w foot">
@@ -519,11 +668,16 @@ footer{background:var(--text);color:rgba(251,247,240,.55);}
         <div class="fl">
           <a href="https://whatsapp.com/channel/0029Vb7gKDbG3R3qmlIybQ1K" target="_blank" rel="noopener">WhatsApp Channel</a>
           <a href="https://instagram.com/upbringdaily" target="_blank" rel="noopener">Instagram @upbringdaily</a>
-          <a href="/cdn-cgi/l/email-protection#cfa7aaa3a3a08fbabfadbda6a1a8abaea6a3b6e1aca0a2"><span class="__cf_email__" data-cfemail="e189848d8d8ea194918393888f868580888d98cf828e8c">[email&#160;protected]</span></a>
+          <a href="mailto:hello@upbringdaily.com">hello@upbringdaily.com</a>
           <a href="https://payhip.com/upbringdaily" target="_blank" rel="noopener">Email Updates</a>
           <a href="https://amzn.eu/d/04zI7nNh" target="_blank" rel="noopener">Get the Book</a>
         </div>
       </div>
+    </div>
+    <div style="display:flex;gap:10px;justify-content:center;padding-bottom:28px;border-bottom:1px solid rgba(251,247,240,.08);margin-bottom:0;">
+      <a href="https://whatsapp.com/channel/0029Vb7gKDbG3R3qmlIybQ1K" target="_blank" rel="noopener" style="width:40px;height:40px;border-radius:50%;background:rgba(34,197,94,.15);display:grid;place-items:center;color:#22C55E;transition:background .2s;" title="WhatsApp"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.122 1.532 5.857L.057 23.882a.5.5 0 00.611.611l6.025-1.475A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.882a9.87 9.87 0 01-5.031-1.378l-.36-.214-3.733.914.93-3.732-.234-.372A9.867 9.867 0 012.118 12C2.118 6.533 6.533 2.118 12 2.118c5.466 0 9.882 4.415 9.882 9.882 0 5.466-4.416 9.882-9.882 9.882z"/></svg></a>
+      <a href="https://instagram.com/upbringdaily" target="_blank" rel="noopener" style="width:40px;height:40px;border-radius:50%;background:rgba(220,39,67,.15);display:grid;place-items:center;color:#e6683c;transition:background .2s;" title="Instagram"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+      <a href="mailto:hello@upbringdaily.com" style="width:40px;height:40px;border-radius:50%;background:rgba(251,247,240,.1);display:grid;place-items:center;color:rgba(251,247,240,.7);transition:background .2s;" title="Email"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg></a>
     </div>
     <div class="ibar">
       <a href="https://instagram.com/upbringdaily" target="_blank" rel="noopener">
@@ -549,7 +703,7 @@ footer{background:var(--text);color:rgba(251,247,240,.55);}
   </div>
 </div>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 // Scroll-aware nav
 const hdr=document.getElementById('hdr');
 window.addEventListener('scroll',()=>hdr.classList.toggle('on',scrollY>20),{passive:true});
@@ -558,33 +712,33 @@ window.addEventListener('scroll',()=>hdr.classList.toggle('on',scrollY>20),{pass
 const srObs=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');srObs.unobserve(e.target);}});},{threshold:0.1});
 document.querySelectorAll('.sr').forEach(function(el){srObs.observe(el);});
 
-// Rotating verse card
+// Daily verse — 5-day cycle based on day of year
 const VS=[
-  {t:'\u201cTrain up a child in the way he should go; even when he is old he will not depart from it.\u201d',r:'Proverbs 22:6'},
-  {t:'\u201cThese commandments are to be on your hearts. Impress them on your children.\u201d',r:'Deuteronomy 6:6-7'},
-  {t:'\u201cAs for me and my house, we will serve the Lord.\u201d',r:'Joshua 24:15'},
-  {t:'\u201cLove is patient, love is kind\u2026 it always protects, always trusts, always hopes, always perseveres.\u201d',r:'1 Corinthians 13:4,7'},
-  {t:'\u201cChildren are a heritage from the Lord, offspring a reward from him.\u201d',r:'Psalm 127:3'},
+  {t:'“Train up a child in the way he should go; even when he is old he will not depart from it.”',r:'Proverbs 22:6'},
+  {t:'“These commandments are to be on your hearts. Impress them on your children.”',r:'Deuteronomy 6:6-7'},
+  {t:'“As for me and my house, we will serve the Lord.”',r:'Joshua 24:15'},
+  {t:'“Love is patient, love is kind… it always protects, always trusts, always hopes, always perseveres.”',r:'1 Corinthians 13:4,7'},
+  {t:'“Children are a heritage from the Lord, offspring a reward from him.”',r:'Psalm 127:3'},
 ];
-let ci=0;
+const now=new Date();
+const dayOfYear=Math.floor((now-(new Date(now.getFullYear(),0,0)))/(1000*60*60*24));
+const ci=dayOfYear%5;
 const vq=document.getElementById('vq'),vr=document.getElementById('vr'),vd=document.getElementById('vd');
-function render(){
-  vq.style.opacity=0;
-  setTimeout(()=>{
-    vq.textContent=VS[ci].t;
-    vr.textContent=VS[ci].r;
-    vq.style.opacity=1;
-    [...vd.children].forEach((s,i)=>s.classList.toggle('a',i===ci));
-  },300);
-}
+const dayNames=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+const monthNames=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+const dateStr=dayNames[now.getDay()]+', '+monthNames[now.getMonth()]+' '+now.getDate()+', '+now.getFullYear();
+// Update label to today's date
+const vlbl=document.querySelector('.v-lbl');
+if(vlbl)vlbl.textContent=dateStr;
+vq.textContent=VS[ci].t;
+vr.textContent=VS[ci].r;
+// Show 5 day dots — highlight today's
 VS.forEach((_,i)=>{
   const s=document.createElement('s');
-  if(i===0)s.classList.add('a');
-  s.onclick=()=>{ci=i;render();};
+  if(i===ci)s.classList.add('a');
+  s.title='Day '+(i+1)+' of 5';
   vd.appendChild(s);
 });
-render();
-setInterval(()=>{ci=(ci+1)%VS.length;render();},5000);
 </script>
 </body>
 </html>

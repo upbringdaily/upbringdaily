@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Free Resources | Upbring Daily</title>
+<meta name="description" content="Download free Christ-centred parenting resources — prayer guides, family devotionals, Scripture printables, and discipleship tools for Christian families.">
+<meta property="og:title" content="Free Resources | Upbring Daily">
+<meta property="og:url" content="https://upbringdaily.com/resources.html">
+<link rel="canonical" href="https://upbringdaily.com/resources.html">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500;1,700&family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+:root{
+  --green:#2D3A28;--sage:#7A9270;--sage-l:#EEF3EB;
+  --cream:#FBF7F0;--warm:#F3EBD8;--terra:#C0633A;--terra-l:#FAE9E2;
+  --gold:#B8892A;--text:#1E1A14;--muted:#6B6255;--border:rgba(30,26,20,.09);
+}
+body{font-family:'Nunito',system-ui,sans-serif;background:var(--cream);color:var(--text);line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+a{text-decoration:none;color:inherit;}
+img{display:block;max-width:100%;}
+.w{width:min(90%,1080px);margin:0 auto;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(22px);}to{opacity:1;transform:none;}}
+.sr.in{animation:fadeUp .75s cubic-bezier(.16,1,.3,1) both;}
+.d1.in{animation-delay:.08s;} .d2.in{animation-delay:.16s;} .d3.in{animation-delay:.24s;} .d4.in{animation-delay:.32s;}
+
+/* NAV */
+header{position:sticky;top:0;z-index:60;transition:background .3s,border .3s;}
+header.on{background:rgba(251,247,240,.95);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);}
+nav{display:flex;align-items:center;justify-content:space-between;height:64px;gap:12px;}
+.logo{display:flex;align-items:center;gap:9px;}
+.logo-mark{width:34px;height:34px;border-radius:50%;background:var(--green);display:grid;place-items:center;font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--gold);flex:none;}
+.logo-text{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:var(--green);}
+.logo-text span{font-style:italic;color:var(--terra);}
+.dlinks{display:flex;align-items:center;gap:20px;}
+.dlinks a{font-size:.85rem;font-weight:600;color:var(--muted);white-space:nowrap;transition:color .2s;}
+.dlinks a:hover,.dlinks a.active{color:var(--green);}
+.cta-btn{background:var(--green);color:#FBF7F0!important;padding:9px 20px;border-radius:999px;font-weight:700;font-size:.85rem;}
+.hbtn{display:none;border:1.5px solid var(--border);background:none;border-radius:9px;width:40px;height:38px;cursor:pointer;flex-direction:column;align-items:center;justify-content:center;gap:4.5px;}
+.hbtn i{display:block;width:16px;height:1.5px;background:var(--text);border-radius:2px;}
+.mnav{display:none;background:var(--cream);border-top:1px solid var(--border);flex-direction:column;}
+.mnav.on{display:flex;}
+.mnav a{padding:13px 5%;font-weight:600;color:var(--text);border-bottom:1px solid var(--border);font-size:.97rem;}
+.mnav .cta-btn{margin:14px 5% 20px;text-align:center;padding:14px;}
+
+/* HERO */
+.res-hero{background:var(--warm);padding:clamp(52px,8vw,88px) 0;border-bottom:1px solid var(--border);}
+.res-hero-in{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:24px;}
+.res-hero-copy{}
+.kicker{font-size:.7rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--terra);margin-bottom:10px;}
+.res-hero h1{font-family:'Playfair Display',serif;font-size:clamp(2.2rem,5.5vw,3.4rem);font-weight:700;color:var(--green);line-height:1.06;margin-bottom:10px;text-wrap:balance;}
+.res-hero p{color:var(--muted);font-size:1rem;max-width:44ch;text-wrap:pretty;}
+.res-hero-badge{background:var(--green);border-radius:20px;padding:22px 26px;color:#FBF7F0;min-width:180px;text-align:center;flex:none;}
+.res-hero-badge .big{font-family:'Playfair Display',serif;font-size:2.6rem;font-weight:700;color:var(--gold);line-height:1;}
+.res-hero-badge small{font-size:.78rem;color:rgba(251,247,240,.6);font-weight:600;letter-spacing:.08em;text-transform:uppercase;}
+
+/* FILTER */
+.filter-bar{display:flex;flex-wrap:wrap;gap:8px;padding:28px 0 8px;}
+.f-btn{background:none;border:1.5px solid var(--border);border-radius:999px;padding:7px 16px;font-size:.82rem;font-weight:700;font-family:'Nunito',sans-serif;color:var(--muted);cursor:pointer;transition:all .2s;}
+.f-btn:hover,.f-btn.on{background:var(--green);color:#FBF7F0;border-color:var(--green);}
+
+/* RESOURCE CARDS */
+.resources-section{padding:0 0 clamp(52px,8vw,88px);}
+.res-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:16px;margin-top:8px;}
+.rcard{background:#fff;border:1.5px solid var(--border);border-radius:22px;overflow:hidden;display:flex;flex-direction:column;transition:border-color .22s,transform .18s;}
+.rcard:hover{border-color:var(--sage);transform:translateY(-3px);}
+.rcard-top{height:130px;display:flex;align-items:center;justify-content:center;font-size:3rem;position:relative;}
+.rcard-top.cl{background:var(--terra-l);}
+.rcard-top.sg{background:var(--sage-l);}
+.rcard-top.gd{background:linear-gradient(135deg,rgba(184,137,42,.15),rgba(184,137,42,.05));}
+.rcard-top.gr{background:linear-gradient(135deg,#e8f5e9,#f1f8f1);}
+.rcard-badge{position:absolute;top:12px;right:12px;background:var(--green);color:#FBF7F0;font-size:.62rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:4px 9px;border-radius:999px;}
+.rcard-body{padding:22px 20px;flex:1;display:flex;flex-direction:column;gap:8px;}
+.rcard-tag{font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--terra);}
+.rcard h3{font-family:'Playfair Display',serif;font-size:1.12rem;font-weight:700;color:var(--green);line-height:1.25;}
+.rcard p{font-size:.85rem;color:var(--muted);line-height:1.58;flex:1;}
+.rcard-foot{padding:0 20px 20px;display:flex;gap:9px;}
+.dl-btn{flex:1;display:inline-flex;align-items:center;justify-content:center;gap:7px;background:var(--green);color:#FBF7F0;padding:11px 16px;border-radius:999px;font-weight:700;font-size:.84rem;transition:opacity .2s;}
+.dl-btn:hover{opacity:.88;}
+.dl-btn.outline{background:transparent;color:var(--green);border:1.5px solid var(--border);}
+.dl-btn.outline:hover{background:var(--warm);}
+
+/* SIGNUP CTA */
+.res-cta{background:var(--green);border-radius:28px;padding:clamp(32px,5vw,52px);text-align:center;position:relative;overflow:hidden;margin:0 0 clamp(52px,8vw,88px);}
+.res-cta::before{content:'';position:absolute;top:-50px;right:-40px;width:200px;height:200px;border-radius:50%;background:rgba(184,137,42,.1);}
+.res-cta-in{position:relative;z-index:1;}
+.res-cta .ck{font-size:.7rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin-bottom:12px;}
+.res-cta h2{font-family:'Playfair Display',serif;font-size:clamp(1.6rem,4vw,2.4rem);font-weight:700;color:#FBF7F0;margin-bottom:10px;text-wrap:balance;}
+.res-cta p{color:rgba(251,247,240,.6);font-size:.93rem;margin-bottom:22px;max-width:44ch;margin-left:auto;margin-right:auto;text-wrap:pretty;}
+.sig-form{display:flex;flex-wrap:wrap;gap:9px;justify-content:center;}
+.sig-form input{flex:1 1 220px;min-width:0;background:rgba(251,247,240,.09);border:1.5px solid rgba(251,247,240,.18);border-radius:999px;padding:13px 20px;font-size:.92rem;font-family:inherit;color:#FBF7F0;outline:none;transition:border-color .2s;}
+.sig-form input::placeholder{color:rgba(251,247,240,.35);}
+.sig-form input:focus{border-color:var(--gold);}
+.sig-form button{background:var(--gold);color:var(--green);border:none;cursor:pointer;padding:13px 24px;border-radius:999px;font-weight:700;font-size:.92rem;font-family:inherit;}
+.sig-fine{margin-top:12px;font-size:.74rem;color:rgba(251,247,240,.35);}
+
+/* FOOTER */
+footer{background:var(--text);color:rgba(251,247,240,.55);}
+.foot{padding:clamp(36px,5vw,52px) 0 0;}
+.fbar{border-top:1px solid rgba(251,247,240,.08);padding:18px 0 28px;display:flex;flex-wrap:wrap;gap:8px;justify-content:space-between;align-items:center;}
+.fbar p{font-size:.76rem;}
+.fbrand{display:flex;align-items:center;gap:9px;margin-bottom:16px;}
+.fbm{width:32px;height:32px;border-radius:50%;background:var(--gold);color:var(--green);display:grid;place-items:center;font-family:'Playfair Display',serif;font-weight:700;font-size:1rem;flex:none;}
+.fbrand span{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:#FBF7F0;}
+.foot-desc{font-size:.85rem;line-height:1.65;margin-bottom:24px;}
+.foot-links{display:flex;flex-wrap:wrap;gap:8px 20px;}
+.foot-links a{font-size:.83rem;transition:color .2s;}
+.foot-links a:hover{color:var(--gold);}
+
+@media(max-width:880px){.dlinks{display:none;}.hbtn{display:flex;}}
+</style>
+</head>
+<body>
+
+<header id="hdr">
+  <nav class="w">
+    <a href="index.html" class="logo">
+      <span class="logo-mark">U</span>
+      <span class="logo-text">Upbring <span>Daily</span></span>
+    </a>
+    <div class="dlinks">
+      <a href="index.html">Home</a>
+            <a href="resources.html" class="active">Resources</a>
+      <a href="blog.html">Blog</a>
+      <a href="https://whatsapp.com/channel/0029Vb7gKDbG3R3qmlIybQ1K" target="_blank" rel="noopener" class="cta-btn">Join Community</a>
+    </div>
+    <button class="hbtn" aria-label="Menu" onclick="document.getElementById('mn').classList.toggle('on')">
+      <i></i><i></i><i></i>
+    </button>
+  </nav>
+  <div class="mnav" id="mn">
+    <a href="index.html">Home</a>
+        <a href="resources.html">Resources</a>
+    <a href="blog.html">Blog</a>
+    <a href="https://whatsapp.com/channel/0029Vb7gKDbG3R3qmlIybQ1K" target="_blank" rel="noopener" class="cta-btn">Join the Community</a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="res-hero">
+  <div class="w res-hero-in">
+    <div class="res-hero-copy sr">
+      <p class="kicker">Free for every family</p>
+      <h1>Resources to disciple<br>your family at home.</h1>
+      <p>Practical, Christ-centred tools for parents who want to build faith into the ordinary rhythms of family life. No theology degree required.</p>
+    </div>
+    <div class="res-hero-badge sr d2">
+      <div class="big">100%</div>
+      <small>Free forever</small>
+    </div>
+  </div>
+</section>
+
+<!-- RESOURCES -->
+<section class="resources-section w">
+  <div class="filter-bar sr">
+    <button class="f-btn on" onclick="filter(this,'all')">All</button>
+    <button class="f-btn" onclick="filter(this,'prayer')">Prayer</button>
+    <button class="f-btn" onclick="filter(this,'devotional')">Devotional</button>
+    <button class="f-btn" onclick="filter(this,'scripture')">Scripture</button>
+    <button class="f-btn" onclick="filter(this,'marriage')">Marriage</button>
+  </div>
+  <div class="res-grid" id="rg">
+    <div class="rcard sr" data-cat="prayer">
+      <div class="rcard-top cl"><span>&#9996;</span><span class="rcard-badge">Free PDF</span></div>
+      <div class="rcard-body">
+        <span class="rcard-tag">Prayer</span>
+        <h3>Daily Prayer Guide for Parents</h3>
+        <p>Simple Scripture-anchored prompts to pray over your spouse and children every morning. One page, 5 minutes.</p>
+      </div>
+      <div class="rcard-foot">
+        <a href="https://payhip.com/upbringdaily" target="_blank" rel="noopener" class="dl-btn">Get it free &rarr;</a>
+      </div>
+    </div>
+    <div class="rcard sr d1" data-cat="devotional">
+      <div class="rcard-top sg"><span>&#128214;</span><span class="rcard-badge">Free PDF</span></div>
+      <div class="rcard-body">
+        <span class="rcard-tag">Devotional</span>
+        <h3>7-Day Family Devotional</h3>
+        <p>Short readings designed to gather the whole family around the table. Age-friendly questions included for young children.</p>
+      </div>
+      <div class="rcard-foot">
+        <a href="https://payhip.com/upbringdaily" target="_blank" rel="noopener" class="dl-btn">Get it free &rarr;</a>
+      </div>
+    </div>
+    <div class="rcard sr d2" data-cat="scripture">
+      <div class="rcard-top gd"><span>&#128155;</span><span class="rcard-badge">Free PDF</span></div>
+      <div class="rcard-body">
+        <span class="rcard-tag">Scripture</span>
+        <h3>Scripture Memory Cards</h3>
+        <p>Print-at-home verse cards your children can carry, memorise, and keep. 12 key verses for growing families.</p>
+      </div>
+      <div class="rcard-foot">
+        <a href="https://payhip.com/upbringdaily" target="_blank" rel="noopener" class="dl-btn">Get it free &rarr;</a>
+      </div>
+    </div>
+    <div class="rcard sr d3" data-cat="marriage">
+      <div class="rcard-top gr"><span>&#128149;</span><span class="rcard-badge">Free PDF</span></div>
+      <div class="rcard-body">
+        <span class="rcard-tag">Marriage</span>
+        <h3>Foundations: Marriage Prep Guide</h3>
+        <p>A short guide for couples preparing for marriage — building a Christ-centred home before the wedding day.</p>
+      </div>
+      <div class="rcard-foot">
+        <a href="https://payhip.com/upbringdaily" target="_blank" rel="noopener" class="dl-btn">Get it free &rarr;</a>
+      </div>
+    </div>
+    <div class="rcard sr d1" data-cat="devotional">
+      <div class="rcard-top cl"><span>&#9728;</span><span class="rcard-badge">Free PDF</span></div>
+      <div class="rcard-body">
+        <span class="rcard-tag">Devotional</span>
+        <h3>Morning Rhythm for Fathers</h3>
+        <p>A 5-minute morning framework to help fathers start the day grounded in God&rsquo;s word before the house wakes up.</p>
+      </div>
+      <div class="rcard-foot">
+        <a href="https://payhip.com/upbringdaily" target="_blank" rel="noopener" class="dl-btn">Get it free &rarr;</a>
+      </div>
+    </div>
+    <div class="rcard sr d2" data-cat="scripture">
+      <div class="rcard-top sg"><span>&#128247;</span><span class="rcard-badge">Free PDF</span></div>
+      <div class="rcard-body">
+        <span class="rcard-tag">Scripture</span>
+        <h3>Verse Printables for the Home</h3>
+        <p>Beautiful A4 Scripture prints to display around your home — keeping God&rsquo;s Word visible in daily family life.</p>
+      </div>
+      <div class="rcard-foot">
+        <a href="https://payhip.com/upbringdaily" target="_blank" rel="noopener" class="dl-btn">Get it free &rarr;</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SIGNUP -->
+<div class="w">
+  <div class="res-cta sr">
+    <div class="res-cta-in">
+      <p class="ck">Get them all in one place</p>
+      <h2>Join the mailing list for the full resource pack.</h2>
+      <p>Subscribe and we&rsquo;ll send you the complete free resource pack, plus first access to every new resource we create.</p>
+      <form class="sig-form" action="https://payhip.com/upbringdaily" method="get" target="_blank">
+        <input type="email" name="email" required placeholder="your@email.com">
+        <button type="submit">Send me everything free</button>
+      </form>
+      <p class="sig-fine">Free forever &middot; Powered by Payhip &middot; Unsubscribe anytime</p>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="w foot">
+    <div class="fbrand"><span class="fbm">U</span><span>Upbring Daily</span></div>
+    <p class="foot-desc">Christ-centred parenting resources and daily encouragement, one ordinary day at a time.</p>
+    <div class="foot-links">
+      <a href="index.html">Home</a>
+            <a href="resources.html">Resources</a>
+      <a href="blog.html">Blog</a>
+      <a href="https://amzn.eu/d/04zI7nNh" target="_blank" rel="noopener">The Book</a>
+      <a href="mailto:hello@upbringdaily.com">Contact</a>
+    </div>
+    <div class="fbar">
+      <p>&copy; 2026 Upbring Daily. All rights reserved.</p>
+      <p style="font-style:italic;font-family:'Playfair Display',serif;font-size:.82rem;">&ldquo;Impress them on your children.&rdquo; &middot; Deut. 6:7</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+const hdr=document.getElementById('hdr');
+window.addEventListener('scroll',()=>hdr.classList.toggle('on',scrollY>20),{passive:true});
+const srObs=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');srObs.unobserve(e.target);}});},{threshold:0.1});
+document.querySelectorAll('.sr').forEach(function(el){srObs.observe(el);});
+
+function filter(btn, cat){
+  document.querySelectorAll('.f-btn').forEach(b=>b.classList.remove('on'));
+  btn.classList.add('on');
+  document.querySelectorAll('.rcard').forEach(c=>{
+    c.style.display=(cat==='all'||c.dataset.cat===cat)?'':'none';
+  });
+}
+</script>
+</body>
+</html>

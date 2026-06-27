@@ -1,0 +1,74 @@
+[
+  {
+    "id": 1,
+    "title": "The one habit that keeps a family rooted in faith.",
+    "summary": "It's not a Sunday routine. It's not a 30-minute devotional. It's something you can do on any ordinary Tuesday, and it changes everything.",
+    "category": "fp",
+    "category_label": "Faith Parenting",
+    "date": "June 4, 2026",
+    "author": "Jaish K Jacob",
+    "read_time": "5 min read",
+    "featured": true,
+    "link": "#"
+  },
+  {
+    "id": 2,
+    "title": "When your child asks \"Does God really hear me?\"",
+    "summary": "How to answer the question every parent hopes they're ready for, with honesty and grace.",
+    "category": "fp",
+    "category_label": "Faith Parenting",
+    "date": "June 18, 2026",
+    "author": "Jaish K Jacob",
+    "read_time": "4 min read",
+    "featured": false,
+    "link": "#"
+  },
+  {
+    "id": 3,
+    "title": "Three prayers to pray over your children before bed.",
+    "summary": "Simple, Scripture-anchored prayers for fathers and mothers to speak over their children every night.",
+    "category": "dd",
+    "category_label": "Devotional",
+    "date": "June 11, 2026",
+    "author": "Jaish K Jacob",
+    "read_time": "3 min read",
+    "featured": false,
+    "link": "#"
+  },
+  {
+    "id": 4,
+    "title": "What to do when you feel like a failing father.",
+    "summary": "For the days you feel inadequate, unprepared, and wondering if you are enough for your children.",
+    "category": "fp",
+    "category_label": "Faith Parenting",
+    "date": "May 28, 2026",
+    "author": "Jaish K Jacob",
+    "read_time": "6 min read",
+    "featured": false,
+    "link": "#"
+  },
+  {
+    "id": 5,
+    "title": "Building your home before you build your wedding.",
+    "summary": "Faith, finances, and family vision: the conversations engaged couples rarely have but always need.",
+    "category": "mp",
+    "category_label": "Marriage Prep",
+    "date": "May 14, 2026",
+    "author": "Jaish K Jacob",
+    "read_time": "5 min read",
+    "featured": false,
+    "link": "#"
+  },
+  {
+    "id": 6,
+    "title": "How to stay connected with your teenager's faith.",
+    "summary": "The teenage years don't have to mean a faith gap. Here's how to stay in the conversation.",
+    "category": "yt",
+    "category_label": "Youth & Teens",
+    "date": "April 30, 2026",
+    "author": "Jaish K Jacob",
+    "read_time": "5 min read",
+    "featured": false,
+    "link": "#"
+  }
+]
